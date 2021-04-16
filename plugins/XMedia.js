@@ -19,7 +19,7 @@ Asena.addCommand({pattern: 'xmedia', fromMe: false, desc: Lang.XMEDİA_DESC}, (a
 
 }));
 
-Asena.addCommand({pattern: 'x4mp4', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'x4mp4', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -40,7 +40,7 @@ Asena.addCommand({pattern: 'x4mp4', fromMe: false, dontAddCommandList: true}, (a
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'x2mp4', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'x2mp4', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -61,7 +61,7 @@ Asena.addCommand({pattern: 'x2mp4', fromMe: false, dontAddCommandList: true}, (a
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp4image', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp4image', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -84,7 +84,7 @@ Asena.addCommand({pattern: 'mp4image', fromMe: false, dontAddCommandList: true},
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'spectrum', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'spectrum', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -104,7 +104,7 @@ Asena.addCommand({pattern: 'spectrum', fromMe: false, dontAddCommandList: true},
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'waves', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'waves', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -124,7 +124,7 @@ Asena.addCommand({pattern: 'waves', fromMe: false, dontAddCommandList: true}, (a
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'frequency', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'frequency', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -144,7 +144,7 @@ Asena.addCommand({pattern: 'frequency', fromMe: false, dontAddCommandList: true}
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'avec', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'avec', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -164,7 +164,7 @@ Asena.addCommand({pattern: 'avec', fromMe: false, dontAddCommandList: true}, (as
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'volumeaudio', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'volumeaudio', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -184,7 +184,7 @@ Asena.addCommand({pattern: 'volumeaudio', fromMe: false, dontAddCommandList: tru
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'cqtaudio', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'cqtaudio', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -204,7 +204,7 @@ Asena.addCommand({pattern: 'cqtaudio', fromMe: false, dontAddCommandList: true},
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp3eq', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp3eq', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -224,7 +224,7 @@ Asena.addCommand({pattern: 'mp3eq', fromMe: false, dontAddCommandList: true}, (a
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp3crusher', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp3crusher', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -244,7 +244,7 @@ Asena.addCommand({pattern: 'mp3crusher', fromMe: false, dontAddCommandList: true
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp3reverse', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp3reverse', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -264,7 +264,7 @@ Asena.addCommand({pattern: 'mp3reverse', fromMe: false, dontAddCommandList: true
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp4vintage', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp4vintage', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -285,7 +285,7 @@ Asena.addCommand({pattern: 'mp4vintage', fromMe: false, dontAddCommandList: true
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp4reverse', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp4reverse', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -307,7 +307,7 @@ Asena.addCommand({pattern: 'mp4reverse', fromMe: false, dontAddCommandList: true
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp4bw', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp4bw', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -328,7 +328,7 @@ Asena.addCommand({pattern: 'mp4bw', fromMe: false, dontAddCommandList: true}, (a
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'bwimage', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'bwimage', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -348,7 +348,7 @@ Asena.addCommand({pattern: 'bwimage', fromMe: false, dontAddCommandList: true}, 
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'vintageimage', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'vintageimage', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -368,7 +368,7 @@ Asena.addCommand({pattern: 'vintageimage', fromMe: false, dontAddCommandList: tr
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp4enhance', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp4enhance', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -389,7 +389,7 @@ Asena.addCommand({pattern: 'mp4enhance', fromMe: false, dontAddCommandList: true
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'blurimage', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'blurimage', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -409,7 +409,7 @@ Asena.addCommand({pattern: 'blurimage', fromMe: false, dontAddCommandList: true}
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp4blur', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp4blur', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -429,7 +429,7 @@ Asena.addCommand({pattern: 'mp4blur', fromMe: false, dontAddCommandList: true}, 
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp3pitch', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp3pitch', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -449,7 +449,7 @@ Asena.addCommand({pattern: 'mp3pitch', fromMe: false, dontAddCommandList: true},
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp4edge', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp4edge', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Video!*');
     var downloading = await message.client.sendMessage(message.jid,'```Edging Video..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -470,7 +470,7 @@ Asena.addCommand({pattern: 'mp4edge', fromMe: false, dontAddCommandList: true}, 
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp3low', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp3low', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -490,7 +490,7 @@ Asena.addCommand({pattern: 'mp3low', fromMe: false, dontAddCommandList: true}, (
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'x2mp3', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'x2mp3', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -510,7 +510,7 @@ Asena.addCommand({pattern: 'x2mp3', fromMe: false, dontAddCommandList: true}, (a
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'edgeimage', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'edgeimage', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Photo*');
     var downloading = await message.client.sendMessage(message.jid,'```Edging Image..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -530,7 +530,7 @@ Asena.addCommand({pattern: 'edgeimage', fromMe: false, dontAddCommandList: true}
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'enhanceimage', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'enhanceimage', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Photo!*');
     var downloading = await message.client.sendMessage(message.jid,'```Converting..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -550,7 +550,7 @@ Asena.addCommand({pattern: 'enhanceimage', fromMe: false, dontAddCommandList: tr
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'mp3volume', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'mp3volume', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('*Need Audio!*');
     var downloading = await message.client.sendMessage(message.jid,'```Editing..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -570,7 +570,7 @@ Asena.addCommand({pattern: 'mp3volume', fromMe: false, dontAddCommandList: true}
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 })); 
 
-Asena.addCommand({pattern: 'gif', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'gif', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('Need Video!');
     var downloading = await message.client.sendMessage(message.jid,'```Converting to Gif..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -592,7 +592,7 @@ Asena.addCommand({pattern: 'gif', fromMe: false, dontAddCommandList: true}, (asy
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'agif', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'agif', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('Need Video!');
     var downloading = await message.client.sendMessage(message.jid,'```Converting to Gif..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
@@ -613,7 +613,7 @@ Asena.addCommand({pattern: 'agif', fromMe: false, dontAddCommandList: true}, (as
     return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
 }));
 
-Asena.addCommand({pattern: 'grenimage', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
+Asena.addCommand({pattern: 'grenimage', fromMe: true, dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage('Need Photo!');
     var downloading = await message.client.sendMessage(message.jid,'```Adding Gren..```',MessageType.text);
     var location = await message.client.downloadAndSaveMediaMessage({
