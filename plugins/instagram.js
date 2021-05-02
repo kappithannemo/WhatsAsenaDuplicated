@@ -80,7 +80,7 @@ Asena.addCommand({ pattern: 'hwrite ?(.*)', fromMe: false,dontAddCommandList: tr
       .get(`http://salism3.pythonanywhere.com/write/?text=${userName}`)
       .then(async (response) => {
         const {
-          images[0],
+          images.[0],
           message,
         } = response.data.result
 
