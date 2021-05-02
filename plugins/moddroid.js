@@ -29,7 +29,7 @@ Asena.addCommand({pattern: 'modd ?(.*)', fromMe: false, desc: Lang.MODD_DESC}, a
 	}
 });
 
-
+/*
 Asena.addCommand({pattern: 'apkp ?(.*)', fromMe: false, desc: "Mod apk from apkpure"}, async (message, match) => {
 	if (match[1] === '') return await message.reply(Lang.NEED_APPNAME);
 	const url = `https://docs-jojo.herokuapp.com/api/apk-pure?q=${match[1]}`;
@@ -60,5 +60,5 @@ Asena.addCommand({pattern: 'apkp ?(.*)', fromMe: false, desc: "Mod apk from apkp
 });
 
 
-
+*/
 
