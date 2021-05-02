@@ -68,34 +68,3 @@ Asena.addCommand({ pattern: 'insta ?(.*)', fromMe: false, usage: Lang.USAGE, des
  )
 
 
-Asena.addCommand({ pattern: 'hwrite ?(.*)', fromMe: false,dontAddCommandList: true  }, async (message, match) => {
-
-    const userName = match[1]
-
-    if (!userName) return await message.sendMessage("Give me some text")
-
-    await message.sendMessage("Loading")
-
-    await axios
-      .get(`http://salism3.pythonanywhere.com/write/?text=${userName}`)
-      .then(async (response) => {
-        const {
-          images,
-          message,
-        } = response.data
-
-        const profileBuffer = await axios.get(images[0], {responseType: 'arraybuffer'})
-
-        const msg = `
-        *${""}*: ${message}    `
-
-        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
-          caption: msg
-        })
-      })
-      .catch(
-        async (err) => await message.sendMessage(errorMessage("error")),
-      )
-  },
- )
-
