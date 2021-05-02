@@ -47,5 +47,13 @@ https://api.html2pdf.app/v1/generate?url=${match[1]}&apiKey=${Config.PDF_API_KEY
 }));   
 
 
+Asena.addCommand({pattern: 'emoji ?(.*)', fromMe: false, desc: "Converts emoji into image."}, (async (message, match) => {
 
+    if (match[1] === '') return await message.sendMessage(Lang.LİNK);
+
+    var webimage = await axios.get(`https://videfikri.com/api/emojitopng/?emojicode=${match[1]}`, { responseType: 'arraybuffer' })
+
+    await message.sendMessage(Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png,quoted:message.data})
+
+}));
 
