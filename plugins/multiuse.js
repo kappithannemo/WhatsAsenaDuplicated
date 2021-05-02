@@ -53,13 +53,13 @@ Asena.addCommand({pattern: 'psong ?(.*)', fromMe: true }, async (message, match)
 	}
 });*/
 
-Asena.addCommand({ pattern: 'pinsta ?(.*)', fromMe: false, desc: "Download insta posts"}, async (message, match) => {
+Asena.addCommand({ pattern: 'pinsta ?(.*)', fromMe: false, desc: "Download insta pics from the link"}, async (message, match) => {
 
     const userName = match[1]
 
     if (!userName) return await message.sendMessage(errorMessage(Lang.NEED_WORDIGTV))
 
-    await message.sendMessage(infoMessage(Lang.LOADINGTV))
+    await message.sendMessage(infoMessage("Loading"))
 
     await axios
       .get(`https://api-anoncybfakeplayer.herokuapp.com/igdown?url=${userName}`)
@@ -79,7 +79,7 @@ Asena.addCommand({ pattern: 'pinsta ?(.*)', fromMe: false, desc: "Download insta
         })
       })
       .catch(
-        async (err) => await message.sendMessage(errorMessage(Lang.NOT_FOUNDIG)),
+        async (err) => await message.sendMessage(errorMessage("error.Please check the link")),
       )
   },
 )
@@ -146,7 +146,7 @@ AAsena.addCommand({ pattern: 'vfb ?(.*)', fromMe: false, desc: Lang.FBDESC }, as
 )
 
 
-Asena.addCommand({ pattern: 'vtwt ?(.*)', fromMe: false, desc: "download from twitter links" }, async (message, match) => {
+Asena.addCommand({ pattern: 'vtwt ?(.*)', fromMe: false, desc: "download videos from twitter links" }, async (message, match) => {
 
     const userName = match[1]
 
@@ -177,7 +177,7 @@ Asena.addCommand({ pattern: 'vtwt ?(.*)', fromMe: false, desc: "download from tw
 )
 
 
-Asena.addCommand({ pattern: 'ptwt ?(.*)', fromMe: false, desc: "download from twitter links" }, async (message, match) => {
+Asena.addCommand({ pattern: 'ptwt ?(.*)', fromMe: false, desc: "download pics from twitter links" }, async (message, match) => {
 
     const userName = match[1]
 
@@ -313,4 +313,401 @@ Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "details of any
   },
 )
 
+Asena.addCommand({ pattern: 'pint ?(.*)', fromMe: false, desc: "download from pinterest links" }, async (message, match) => {
 
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Give proper link!"))
+
+    await message.sendMessage(infoMessage(Lang.LOADINGTV))
+
+    await axios
+      .get(`https://scrap.terhambar.com/pin?url=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+        } = response.data.result
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `*${"Url"}*: ${url}`
+
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("Error" )),
+      )
+  },
+)
+
+
+
+
+
+
+
+
+
+
+
+Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download insta stories of the given username.\n Use stinsta1,stinsta2,stinsta3...if more than one post is avaiable."}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[0]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+
+
+
+	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[1]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+
+
+	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[2]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+
+
+
+	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[3]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+
+
+
+	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[4]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+
+
+	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[5]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+
+	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[6]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+
+		
+			Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[7]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+				
+					Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[8]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+						
+						
+							Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+        } = response.data.result[9]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `${type}`
+	
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
