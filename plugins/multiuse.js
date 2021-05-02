@@ -53,7 +53,7 @@ Asena.addCommand({pattern: 'psong ?(.*)', fromMe: true }, async (message, match)
 	}
 });*/
 
-Asena.addCommand({ pattern: 'pinsta ?(.*)', fromMe: false, desc: "Download insta pics from the link"}, async (message, match) => {
+Asena.addCommand({ pattern: 'insta ?(.*)', fromMe: false, desc: "Download content from insta link"}, async (message, match) => {
 
     const userName = match[1]
 
@@ -71,12 +71,17 @@ Asena.addCommand({ pattern: 'pinsta ?(.*)', fromMe: false, desc: "Download insta
 
         const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
 
-        const msg = `
-        *${"Type"}*: ${type}`
+        const msg = `${type}`
 
-        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
           caption: msg,
-        })
+        })}
+		 	 
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+	
+        
       })
       .catch(
         async (err) => await message.sendMessage(errorMessage("error.Please check the link")),
@@ -85,37 +90,9 @@ Asena.addCommand({ pattern: 'pinsta ?(.*)', fromMe: false, desc: "Download insta
 )
 
 
-Asena.addCommand({ pattern: 'vinsta ?(.*)', fromMe: false, desc: Lang.IGDESC }, async (message, match) => {
 
-    const userName = match[1]
 
-    if (!userName) return await message.sendMessage(errorMessage(Lang.NEED_WORDIG))
-
-    await message.sendMessage(infoMessage(Lang.LOADINGTV))
-
-    await axios
-      .get(`https://api-anoncybfakeplayer.herokuapp.com/igdown?url=${userName}`)
-      .then(async (response) => {
-        const {
-          url,
-	type,	
-        } = response.data.result[0]
-
-        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
-
-        const msg = `*${Lang.VID}*: ${type}`
-
-        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
-          caption: msg,
-        })
-      })
-      .catch(
-        async (err) => await message.sendMessage(errorMessage(Lang.NOT_FOUNDIG )),
-      )
-  },
-)
-
-Asena.addCommand({ pattern: 'vfb ?(.*)', fromMe: false, desc: Lang.FBDESC }, async (message, match) => {
+Asena.addCommand({ pattern: 'fb ?(.*)', fromMe: false, desc: Lang.FBDESC }, async (message, match) => {
 
     const userName = match[1]
 
@@ -146,7 +123,7 @@ Asena.addCommand({ pattern: 'vfb ?(.*)', fromMe: false, desc: Lang.FBDESC }, asy
 )
 
 
-Asena.addCommand({ pattern: 'vtwt ?(.*)', fromMe: false, desc: "download videos from twitter links" }, async (message, match) => {
+Asena.addCommand({ pattern: 'twt ?(.*)', fromMe: false, desc: "download from twitter links" }, async (message, match) => {
 
     const userName = match[1]
 
@@ -166,47 +143,21 @@ Asena.addCommand({ pattern: 'vtwt ?(.*)', fromMe: false, desc: "download videos 
 
         const msg = `*${"Size"}*: ${filesize}`
 
-        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+
+      if (msg === 'Image/jpg or png') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
           caption: msg,
-        })
+        })}
+		 	 
+	if (msg === 'video/mp4') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
       })
       .catch(
         async (err) => await message.sendMessage(errorMessage("Error" )),
       )
   },
 )
-
-
-Asena.addCommand({ pattern: 'ptwt ?(.*)', fromMe: false, desc: "download pics from twitter links" }, async (message, match) => {
-
-    const userName = match[1]
-
-    if (!userName) return await message.sendMessage(errorMessage("Give proper link!"))
-
-    await message.sendMessage(infoMessage(Lang.LOADINGTV))
-
-    await axios
-      .get(`https://api-anoncybfakeplayer.herokuapp.com/twdown?url=${userName}`)
-      .then(async (response) => {
-        const {
-          filesize,
-          result,
-        } = response.data
-
-        const profileBuffer = await axios.get(result, {responseType: 'arraybuffer'})
-
-        const msg = `*${"Size"}*: ${filesize}`
-
-        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
-          caption: msg,
-        })
-      })
-      .catch(
-        async (err) => await message.sendMessage(errorMessage("Error" )),
-      )
-  },
-)
-
 
 
 
@@ -277,7 +228,7 @@ Asena.addCommand({ pattern: 'mp4yt ?(.*)', fromMe: false , desc: "Use this if .v
 
 
 
-Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "details of any famous shows"}, async (message, match) => {
+Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false ,  dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -319,7 +270,7 @@ Asena.addCommand({ pattern: 'pint ?(.*)', fromMe: false, desc: "download from pi
 
     if (!userName) return await message.sendMessage(errorMessage("Give proper link!"))
 
-    await message.sendMessage(infoMessage(Lang.LOADINGTV))
+    await message.sendMessage(infoMessage("Loading"))
 
     await axios
       .get(`https://scrap.terhambar.com/pin?url=${userName}`)
