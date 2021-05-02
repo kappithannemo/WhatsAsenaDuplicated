@@ -88,6 +88,13 @@
             "required": false,
             "value": "true"
         },
+
+          "PDF_API_KEY": {
+            "description": "Generate your pdf apikey after registering in https://html2pdf.app/ .",
+            "required": false,
+            "value": "true"
+        },
+
         "COFFEEHOUSE_API_KEY": {
             "description": "CoffeeHouse API Key. Need for Lydia. https://coffeehouse.intellivoid.net/",
             "required": false,
