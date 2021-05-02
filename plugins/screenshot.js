@@ -47,7 +47,7 @@ https://api.html2pdf.app/v1/generate?url=${match[1]}&apiKey=${Config.PDF_API_KEY
 }));   
 
 
-Asena.addCommand({pattern: 'emoji ?(.*)', fromMe: false, desc: "Converts emoji into image."}, (async (message, match) => {
+Asena.addCommand({pattern: 'emoji ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     if (match[1] === '') return await message.sendMessage(Lang.LİNK);
 
