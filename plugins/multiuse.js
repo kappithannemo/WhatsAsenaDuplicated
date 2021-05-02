@@ -389,7 +389,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
 
 
 
-	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+	Asena.addCommand({ pattern: 'stinsta2 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -425,7 +425,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
 )
 
 
-	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+	Asena.addCommand({ pattern: 'stinsta3 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -462,7 +462,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
 
 
 
-	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+	Asena.addCommand({ pattern: 'stinsta4 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -499,7 +499,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
 
 
 
-	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+	Asena.addCommand({ pattern: 'stinsta5 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -535,7 +535,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
 )
 
 
-	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+	Asena.addCommand({ pattern: 'stinsta6 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -570,7 +570,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
   },
 )
 
-	Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+	Asena.addCommand({ pattern: 'stinsta7 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -606,7 +606,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
 )
 
 		
-			Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+			Asena.addCommand({ pattern: 'stinsta8 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -641,7 +641,8 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
   },
 )
 				
-					Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+Asena.addCommand({ pattern: 'stinsta9 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -677,7 +678,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
 )
 						
 						
-							Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+ Asena.addCommand({ pattern: 'stinsta10 ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
