@@ -67,7 +67,6 @@ Asena.addCommand({ pattern: 'insta ?(.*)', fromMe: false, usage: Lang.USAGE, des
 
  )
 
-/*
 
 Asena.addCommand({ pattern: 'hwrite ?(.*)', fromMe: false,dontAddCommandList: true  }, async (message, match) => {
 
@@ -81,7 +80,7 @@ Asena.addCommand({ pattern: 'hwrite ?(.*)', fromMe: false,dontAddCommandList: tr
       .get(`http://salism3.pythonanywhere.com/write/?text=${userName}`)
       .then(async (response) => {
         const {
-          images.[0],
+          images,
           message,
         } = response.data.result
 
@@ -99,4 +98,4 @@ Asena.addCommand({ pattern: 'hwrite ?(.*)', fromMe: false,dontAddCommandList: tr
       )
   },
  )
-*/
+
