@@ -53,7 +53,7 @@ Asena.addCommand({pattern: 'psong ?(.*)', fromMe: true }, async (message, match)
 	}
 });*/
 
-Asena.addCommand({ pattern: 'pinsta ?(.*)', fromMe: false, desc: Lang.IGTVDESC }, async (message, match) => {
+Asena.addCommand({ pattern: 'pinsta ?(.*)', fromMe: false, desc: "Download insta posts"}, async (message, match) => {
 
     const userName = match[1]
 
@@ -145,6 +145,69 @@ Asena.addCommand({ pattern: 'vfb ?(.*)', fromMe: false, desc: Lang.FBDESC }, asy
   },
 )
 
+
+Asena.addCommand({ pattern: 'twt ?(.*)', fromMe: false, desc: "download from twitter links" }, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Give proper link!"))
+
+    await message.sendMessage(infoMessage(Lang.LOADINGTV))
+
+    await axios
+      .get(`https://api-anoncybfakeplayer.herokuapp.com/twdown?url=${userName}`)
+      .then(async (response) => {
+        const {
+          format,
+          result,
+        } = response.data
+
+        const profileBuffer = await axios.get(result, {responseType: 'arraybuffer'})
+
+        const msg = `*${Lang.CAPTION}*: ${format}`
+
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage(Lang.NOT_FOUNDFB )),
+      )
+  },
+)
+
+
+Asena.addCommand({ pattern: 'twtp ?(.*)', fromMe: false, desc: "download from twitter links" }, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Give proper link!"))
+
+    await message.sendMessage(infoMessage(Lang.LOADINGTV))
+
+    await axios
+      .get(`https://api-anoncybfakeplayer.herokuapp.com/twdown?url=${userName}`)
+      .then(async (response) => {
+        const {
+          format,
+          result,
+        } = response.data
+
+        const profileBuffer = await axios.get(result, {responseType: 'arraybuffer'})
+
+        const msg = `*${Lang.CAPTION}*: ${format}`
+
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage(Lang.NOT_FOUNDFB )),
+      )
+  },
+)
+
+
 Asena.addCommand({ pattern: 'mp3yt ?(.*)', fromMe: false, desc: "Try this if .song is not giving results.\n Works for youtube links only"}, async (message, match) => {
 
     const userName = match[1]
@@ -167,7 +230,7 @@ Asena.addCommand({ pattern: 'mp3yt ?(.*)', fromMe: false, desc: "Try this if .so
         const msg = `*${"quality"}*: ${quality}\n*${"file size"}*: ${filesize}`
 	    
         await message.sendMessage(msg)
-        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.audio, {
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.mp3, {
          quoted : message.data
         })
       })
