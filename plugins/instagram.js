@@ -46,7 +46,7 @@ Asena.addCommand({ pattern: 'insta ?(.*)', fromMe: false, usage: Lang.USAGE, des
           bio,
           follower,
           following,
-        } = response.data.result
+        } = response.data
 
         const profileBuffer = await axios.get(pic, {responseType: 'arraybuffer'})
 
@@ -82,7 +82,7 @@ Asena.addCommand({ pattern: 'hwrite ?(.*)', fromMe: false,dontAddCommandList: tr
         const {
           images,
           message,
-        } = response.data.result
+        } = response.data
 
         const profileBuffer = await axios.get(images[0], {responseType: 'arraybuffer'})
 
