@@ -40,21 +40,21 @@ Asena.addCommand({pattern: 'dict ?(.*)', fromMe: false, desc: "Dictionary servic
 		const response = await got(url);
 		const json = JSON.parse(response.body);
 		if (response.statusCode === 200) return await message.client.sendMessage(message.jid, 
-		'* ' + "Word:" +'* ```' + json.result[0].word + '```\n' + 
-		'* ' + "Phonetics:" +'* ```' + json.result[0].phonetics[0].text + '```\n\n' + 
-    '* ' + "Part of Speech:" +'* ```' + json.result[0].meanings[0].partOfSpeech + '```\n' + 
-		'* ' + "Definition 1:" +'* ```' + json.result[0].meanings[0].definitions[0].definition + '```\n' +                                                                          
-    '* ' + "Synonyms:" +'* ```' + json.result[0].meanings[0].definitions[0].synonyms[0] + '```\n' + 
-    '* ' + "-" +'* ```' + json.result[0].meanings[0].definitions[0].synonyms[1] + '```\n' + 
-    '* ' + "-" +'* ```' + json.result[0].meanings[0].definitions[0].synonyms[2] + '```\n' +  
-    '* ' + "Usage:" +'* ```' + json.result[0].meanings[0].definitions[0].example + '```\n\n' +                                                                            
-		'* ' + "Definition 2:" +'* ```' + json.result[0].meanings[0].definitions[1].definition + '```\n' +                                                                          
- 	'* ' + "Usage:" +'* ```' + json.result[0].meanings[0].definitions[1].example + '```\n\n\n' + 
-    '* ' + "Part of Speech:" +'* ```' + json.result[0].meanings[1].partOfSpeech + '```\n\n' + 
-		'* ' + "Definition :" +'* ```' + json.result[0].meanings[0].definitions[0].definition + '```\n' +                                                                          
-    '* ' + "Synonyms:" +'* ```' + json.result[0].meanings[0].definitions[0].synonyms[0] + '```\n' + 
-    '* ' + "-" +'* ```' + json.result[0].meanings[0].definitions[0].synonyms[1] + '```\n' +  
-    '* ' + "Usage:" +'* ```' + json.result[0].meanings[0].definitions[0].example + '```\n\n', MessageType.text);
+		'* ' + "Word:" +'* ```' + json[0].word + '```\n' + 
+		'* ' + "Phonetics:" +'* ```' + json[0].phonetics[0].text + '```\n\n' + 
+    '* ' + "Part of Speech:" +'* ```' + json.result[0][0].partOfSpeech + '```\n' + 
+		'* ' + "Definition 1:" +'* ```' + json[0].meanings[0].definitions[0].definition + '```\n' +                                                                          
+    '* ' + "Synonyms:" +'* ```' + json[0].meanings[0].definitions[0].synonyms[0] + '```\n' + 
+    '* ' + "-" +'* ```' + json[0].meanings[0].definitions[0].synonyms[1] + '```\n' + 
+    '* ' + "-" +'* ```' + json[0].meanings[0].definitions[0].synonyms[2] + '```\n' +  
+    '* ' + "Usage:" +'* ```' + json[0].meanings[0].definitions[0].example + '```\n\n' +                                                                            
+		'* ' + "Definition 2:" +'* ```' + json[0].meanings[0].definitions[1].definition + '```\n' +                                                                          
+ 	'* ' + "Usage:" +'* ```' + json[0].meanings[0].definitions[1].example + '```\n\n\n' + 
+    '* ' + "Part of Speech:" +'* ```' + json[0].meanings[1].partOfSpeech + '```\n\n' + 
+		'* ' + "Definition :" +'* ```' + json[0].meanings[0].definitions[0].definition + '```\n' +                                                                          
+    '* ' + "Synonyms:" +'* ```' + json[0].meanings[0].definitions[0].synonyms[0] + '```\n' + 
+    '* ' + "-" +'* ```' + json[0].meanings[0].definitions[0].synonyms[1] + '```\n' +  
+    '* ' + "Usage:" +'* ```' + json[0].meanings[0].definitions[0].example + '```\n\n', MessageType.text);
 	} catch {
 		return await message.client.sendMessage(message.jid, "error", MessageType.text);
 	}
