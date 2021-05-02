@@ -65,6 +65,7 @@ Asena.addCommand({ pattern: 'insta ?(.*)', fromMe: false, usage: Lang.USAGE, des
       )
   },
 
+ )
 
 /*
 
@@ -97,5 +98,5 @@ Asena.addCommand({ pattern: 'hwrite ?(.*)', fromMe: false,dontAddCommandList: tr
         async (err) => await message.sendMessage(errorMessage("error")),
       )
   },
-
+ )
 */
