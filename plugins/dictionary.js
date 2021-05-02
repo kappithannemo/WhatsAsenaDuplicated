@@ -39,7 +39,7 @@ Asena.addCommand({pattern: 'dict ?(.*)', fromMe: false, desc: "Dictionary servic
 	try {
 		const response = await got(url);
 		const json = JSON.parse(response.body);
-	       return await message.client.sendMessage(message.jid, 
+	       if (response.statusCode === 200) return await message.client.sendMessage(message.jid, 
 		'* ' + "Word:" +'* ```' + json[0].word + '```\n' + 
 		'* ' + "Phonetics:" +'* ```' + json[0].phonetics[0].text + '```\n\n' + 
                 '* ' + "Part of Speech:" +'* ```' + json.result[0][0].partOfSpeech + '```\n' + 
