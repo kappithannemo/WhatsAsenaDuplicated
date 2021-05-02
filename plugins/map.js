@@ -4,7 +4,7 @@ you may not use this file except in compliance with the License.
 WhatsAsenaDuplicated
 
 this plugin works rarely only
-*/
+
 
 const Asena = require('../events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
@@ -25,3 +25,4 @@ Asena.addCommand({pattern: 'map ?(.*)', fromMe: false, desc: Lang.MAP_DESC}, (as
     await message.client.sendMessage(message.jid,Buffer.from(webimage.gambar.data), MessageType.image, {mimetype: Mimetype.jpg })
 
 }));
+*/
