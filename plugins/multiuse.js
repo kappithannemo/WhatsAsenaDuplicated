@@ -270,3 +270,50 @@ Asena.addCommand({ pattern: 'mp4yt ?(.*)', fromMe: false , desc: "Use this if .v
       )
   },
 )
+
+
+
+Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "details of any famous shows"}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("give me the show name"))
+
+    await message.sendMessage(infoMessage("Loading..."))
+
+  await axios
+      .get(`http://api.tvmaze.com/search/shows?q=${userName}`)
+      .then(async (response) => {
+        const {
+          name,
+          type,	
+          language,
+          genres[0],
+	  genres[1],
+	  status,
+	  officialSite,
+	  image.original,
+	  summary,
+        } = response.data.result[0].show
+
+        const profileBuffer = await axios.get(image.original, {responseType: 'arraybuffer'})
+
+        const msg = `
+        *${"Name"}*: ${name}    
+        *${"Type"}*: ${type}
+        *${"Genre"}*: ${genres[0]}
+        *${"Genre"}*: ${genres[1]}
+        *${"Type"}*: ${status}
+        *${"Summary"}*: ${summary}
+        *${"Official Site"}*: ${officialSite}`
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("Not Found" )),
+      )
+  },
+)
+
+
