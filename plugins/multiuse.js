@@ -72,7 +72,7 @@ Asena.addCommand({ pattern: 'pinsta ?(.*)', fromMe: false, desc: "Download insta
         const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
 
         const msg = `
-        *${Lang.VID}*: ${type}`
+        *${"Type"}*: ${type}`
 
         await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
           caption: msg,
@@ -115,7 +115,7 @@ Asena.addCommand({ pattern: 'vinsta ?(.*)', fromMe: false, desc: Lang.IGDESC }, 
   },
 )
 
-Asena.addCommand({ pattern: 'vfb ?(.*)', fromMe: false, desc: Lang.FBDESC }, async (message, match) => {
+AAsena.addCommand({ pattern: 'vfb ?(.*)', fromMe: false, desc: Lang.FBDESC }, async (message, match) => {
 
     const userName = match[1]
 
@@ -124,15 +124,16 @@ Asena.addCommand({ pattern: 'vfb ?(.*)', fromMe: false, desc: Lang.FBDESC }, asy
     await message.sendMessage(infoMessage(Lang.LOADINGTV))
 
     await axios
-      .get(`https://scrap.terhambar.com/fb?link=${userName}`)
+      .get(`https://videfikri.com/api/fbdl/?urlfb=${userName}`)
       .then(async (response) => {
         const {
-          sdQuality,
-        } = response.data.result.linkVideo
+          url,
+          judul,
+        } = response.data.result
 
-        const profileBuffer = await axios.get(sdQuality, {responseType: 'arraybuffer'})
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
 
-        const msg = `*${""}*: ${"Fbpost:"}`
+        const msg = `*${Lang.CAPTION}*: ${judul}`
 
         await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
@@ -145,7 +146,7 @@ Asena.addCommand({ pattern: 'vfb ?(.*)', fromMe: false, desc: Lang.FBDESC }, asy
 )
 
 
-Asena.addCommand({ pattern: 'twt ?(.*)', fromMe: false, desc: "download from twitter links" }, async (message, match) => {
+Asena.addCommand({ pattern: 'vtwt ?(.*)', fromMe: false, desc: "download from twitter links" }, async (message, match) => {
 
     const userName = match[1]
 
@@ -163,17 +164,50 @@ Asena.addCommand({ pattern: 'twt ?(.*)', fromMe: false, desc: "download from twi
 
         const profileBuffer = await axios.get(result, {responseType: 'arraybuffer'})
 
-        const msg = `*${Lang.CAPTION}*: ${filesize}`
+        const msg = `*${"Size"}*: ${filesize}`
 
         await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })
       })
       .catch(
-        async (err) => await message.sendMessage(errorMessage(Lang.NOT_FOUNDFB )),
+        async (err) => await message.sendMessage(errorMessage("Error" )),
       )
   },
 )
+
+
+Asena.addCommand({ pattern: 'ptwt ?(.*)', fromMe: false, desc: "download from twitter links" }, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Give proper link!"))
+
+    await message.sendMessage(infoMessage(Lang.LOADINGTV))
+
+    await axios
+      .get(`https://api-anoncybfakeplayer.herokuapp.com/twdown?url=${userName}`)
+      .then(async (response) => {
+        const {
+          filesize,
+          result,
+        } = response.data
+
+        const profileBuffer = await axios.get(result, {responseType: 'arraybuffer'})
+
+        const msg = `*${"Size"}*: ${filesize}`
+
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("Error" )),
+      )
+  },
+)
+
+
 
 
 
@@ -263,18 +297,15 @@ Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "details of any
 	  summary,
         } = response.data.result[0].show
 
-        const profileBuffer = await axios.get(image.original, {responseType: 'arraybuffer'})
-
+   
         const msg = `
         *${"Name"}*: ${name}    
         *${"Type"}*: ${type}
         *${"Type"}*: ${status}
         *${"Summary"}*: ${summary}
         *${"Official Site"}*: ${officialSite}`
-        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
-          caption: msg,
-        })
-	  return await message.client.sendMessage(message.jid, msg , MessageType.text);
+       
+       await message.client.sendMessage(message.jid, msg , MessageType.text);
       })
       .catch(
         async (err) => await message.sendMessage(errorMessage("Not Found" )),
