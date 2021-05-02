@@ -66,7 +66,7 @@ Asena.addCommand({ pattern: 'insta ?(.*)', fromMe: false, usage: Lang.USAGE, des
   },
 
 
-
+/*
 
 Asena.addCommand({ pattern: 'hwrite ?(.*)', fromMe: false,dontAddCommandList: true  }, async (message, match) => {
 
@@ -98,3 +98,4 @@ Asena.addCommand({ pattern: 'hwrite ?(.*)', fromMe: false,dontAddCommandList: tr
       )
   },
 
+*/
