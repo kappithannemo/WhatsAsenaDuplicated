@@ -21,7 +21,7 @@ Asena.addCommand({pattern: 'lyrics ?(.*)', fromMe: false, desc: Lang.LYRICS_DESC
 		/*'*🎧 ' + Lang.ALBUM +':* ```' + json.result.album + '```\n' +
 		'*🔊 ' + Lang.TITLE +':* ```' + json.result.title + '```\n' +
 		'*🎚️ ' + Lang.PUBLICATION +':* ```' + json.result.artist + '```\n' +*/ 
-		'*🎼 ' + Lang.SONGLI +':* ```' + json.result.result.lirik + '```\n' , MessageType.text);
+		'*🎼 ' + Lang.SONGLI +':* ```' + json.data.result.lirik + '```\n' , MessageType.text);
 		
 	} catch {
 		return await message.client.sendMessage(message.jid, Lang.NOT_FOUNDS, MessageType.text);
