@@ -227,10 +227,10 @@ Asena.addCommand({ pattern: 'mp3yt ?(.*)', fromMe: false, desc: "Try this if .so
 
         const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
 
-        const msg = `*${"quality"}*: ${quality}\n*${"file size"}*: ${filesize}`
+        const msg = `*${"quality"}*: ${quality}\n*${"file size"}*: ${filesize}\n*${"url"}*: ${url}`
 	    
         await message.sendMessage(msg)
-        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.mp3, {
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.audio, {
          quoted : message.data
         })
       })
