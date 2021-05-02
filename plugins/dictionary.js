@@ -21,7 +21,7 @@ Asena.addCommand({pattern: 'lngcode', fromMe: false, dontAddCommandList: true}, 
 
 
 
-Asena.addCommand({pattern: 'dict ?(.*)', fromMe: false, desc: "Dictionary service.\n Use languagecode;word \n send .lngcode for seeing available language codes." }, async (message, match) => {
+Asena.addCommand({pattern: 'dict ?(.*)', fromMe: false,  dontAddCommandList: true }, async (message, match) => {
 	if (match[1] === '') return await message.reply("Need word to translate");
 
        if (match[1].includes(';')) {
