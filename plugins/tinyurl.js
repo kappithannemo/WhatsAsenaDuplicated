@@ -7,13 +7,13 @@ WhatsAsena - Yusuf Usta
 const Asena = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const got = require('got');
-
+const Config = require('../config');
 const Language = require('../language');
 const Lang = Language.getString('weather');
 
 Asena.addCommand({pattern: 'tiny ?(.*)', fromMe: false, desc: Lang.TIN_DESC}, async (message, match) => {
 	if (match[1] === '') return await message.reply(Lang.NEED_LINK);
-	const url = `https://tobz-api.herokuapp.com/api/tinyurl?url=${match[1]}&apikey=BotWeA`;
+	const url = `https://tobz-api.herokuapp.com/api/tinyurl?url=${match[1]}&apikey=${Config.TOBZ_API_KEY}`;
 	try {
 		const response = await got(url);
 		const json = JSON.parse(response.body);
@@ -26,7 +26,7 @@ Asena.addCommand({pattern: 'tiny ?(.*)', fromMe: false, desc: Lang.TIN_DESC}, as
 
 Asena.addCommand({pattern: 'ptiny ?(.*)', fromMe: true, dontAddCommandList: true }, async (message, match) => {
 	if (match[1] === '') return await message.reply(Lang.NEED_LINK);
-	const url = `https://tobz-api.herokuapp.com/api/tinyurl?url=${match[1]}&apikey=BotWeA`;
+	const url = `https://tobz-api.herokuapp.com/api/tinyurl?url=${match[1]}&apikey=${Config.TOBZ_API_KEY}`;
 	try {
 		const response = await got(url);
 		const json = JSON.parse(response.body);
