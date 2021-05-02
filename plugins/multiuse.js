@@ -289,7 +289,6 @@ Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "details of any
           type,	
           language,
           genres,
-	  genres,
 	  status,
 	  officialSite,
 	  image,
