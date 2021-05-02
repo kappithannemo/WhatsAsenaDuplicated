@@ -1,7 +1,7 @@
 /* Copyright (C) 2021 Vai838.
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
-WhatsAsenaDuplicated
+WhatsAsenaDuplicated*/
 
 
 const Asena = require('../events');
@@ -26,4 +26,4 @@ Asena.addCommand({pattern: 'happymod ?(.*)', fromMe: false, desc: Lang.HMODD_DES
 		return await message.client.sendMessage(message.jid, Lang.NOT_FOUNDMD, MessageType.text);
 	}
 });
-*/
+
