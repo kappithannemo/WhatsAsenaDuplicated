@@ -128,7 +128,7 @@ Asena.addCommand({ pattern: 'vfb ?(.*)', fromMe: false, desc: Lang.FBDESC }, asy
       .then(async (response) => {
         const {
           title,
-          linkVideo.sdQuality,
+          linkVideo,
         } = response.data.result
 
         const profileBuffer = await axios.get(linkVideo.sdQuality, {responseType: 'arraybuffer'})
@@ -288,11 +288,11 @@ Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "details of any
           name,
           type,	
           language,
-          genres[0],
-	  genres[1],
+          genres,
+	  genres,
 	  status,
 	  officialSite,
-	  image.original,
+	  image,
 	  summary,
         } = response.data.result[0].show
 
