@@ -11,7 +11,7 @@ const got = require('got');
 const Language = require('../language');
 const Lang = Language.getString('weather');          
 
-Asena.addCommand({pattern: 'lyrics ?(.*)', fromMe: false, desc: Lang.LYRICS_DESC}, async (message, match) => {
+Asena.addCommand({pattern: 'lyrics ?(.*)', fromMe: false, desc: Lang.LYRICS_DESC,dontAddCommandList: true}, async (message, match) => {
 	if (match[1] === '') return await message.reply(Lang.NEED_SONG);
 	const url = `https://scrap.terhambar.com/lirik?word=${match[1]}`;
 	try {
@@ -21,7 +21,7 @@ Asena.addCommand({pattern: 'lyrics ?(.*)', fromMe: false, desc: Lang.LYRICS_DESC
 		/*'*🎧 ' + Lang.ALBUM +':* ```' + json.result.album + '```\n' +
 		'*🔊 ' + Lang.TITLE +':* ```' + json.result.title + '```\n' +
 		'*🎚️ ' + Lang.PUBLICATION +':* ```' + json.result.artist + '```\n' +*/ 
-		'*🎼 ' + Lang.SONGLI +':* ```' + json.lirik + '```\n' , MessageType.text);
+		'*🎼 ' + Lang.SONGLI +':* ```' + json.result.lirik + '```\n' , MessageType.text);
 		
 	} catch {
 		return await message.client.sendMessage(message.jid, Lang.NOT_FOUNDS, MessageType.text);
