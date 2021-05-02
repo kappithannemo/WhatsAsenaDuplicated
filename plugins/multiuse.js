@@ -376,7 +376,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -413,7 +413,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -449,7 +449,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -486,7 +486,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -523,7 +523,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -559,7 +559,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -594,7 +594,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -630,7 +630,7 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -666,7 +666,7 @@ Asena.addCommand({ pattern: 'stinsta9 ?(.*)', fromMe: false, dontAddCommandList:
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -702,7 +702,7 @@ Asena.addCommand({ pattern: 'stinsta9 ?(.*)', fromMe: false, dontAddCommandList:
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') {{ await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
