@@ -849,7 +849,7 @@ Asena.addCommand({ pattern: 'igstory ?(.*)', fromMe: false,  dontAddCommandList:
       })
       .catch(
         async (err) => await message.sendMessage(errorMessage("error")),
-      )})
+      )}})
   },
 )
 
