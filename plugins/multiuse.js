@@ -814,7 +814,7 @@ Asena.addCommand({ pattern: 'igstory ?(.*)', fromMe: false,  dontAddCommandList:
     await message.sendMessage(infoMessage("Loading"))
 
 
-  for (var i = 0; i < (response.data.count < 20 ? response.data.count : 20); i++) {
+  for (var i = 0; i < (count < 20 ? count : 20); i++) {
           
     await axios
       .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
