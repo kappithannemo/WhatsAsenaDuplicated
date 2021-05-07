@@ -195,7 +195,71 @@ Asena.addCommand({ pattern: 'mp3yt ?(.*)', fromMe: false, desc: "Try this if .so
   },
 )
 
-Asena.addCommand({ pattern: 'mp4yt ?(.*)', fromMe: false , desc: "Use this if .videos is not working. Provide the youtube link "}, async (message, match) => {
+Asena.addCommand({ pattern: 'mp4yt ?(.*)', fromMe: false , desc: "Use this if .videos is not working. Provide the youtube link \n Use mp4yt2,mp4yt3 for more quality"}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Provide the video"))
+
+    await message.sendMessage(infoMessage("Loading..."))
+
+  await axios
+      .get(`https://api-anoncybfakeplayer.herokuapp.com/ytmp4?url=${userName}`)
+      .then(async (response) => {
+        const {
+          quality,
+          url,	
+        } = response.data.result[0]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `*${"Quality"}*: ${quality}`
+	    
+
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("Error.\n Filesize exceeded or invalid link" )),
+      )
+  },
+)
+
+
+Asena.addCommand({ pattern: 'mp4yt2 ?(.*)', fromMe: false  ,  dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Provide the video"))
+
+    await message.sendMessage(infoMessage("Loading..."))
+
+  await axios
+      .get(`https://api-anoncybfakeplayer.herokuapp.com/ytmp4?url=${userName}`)
+      .then(async (response) => {
+        const {
+          quality,
+          url,	
+        } = response.data.result[1]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const msg = `*${"Quality"}*: ${quality}`
+	    
+
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("Error.\n Filesize exceeded or invalid link" )),
+      )
+  },
+)
+
+
+Asena.addCommand({ pattern: 'mp4yt3 ?(.*)', fromMe: false ,  dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
@@ -221,12 +285,10 @@ Asena.addCommand({ pattern: 'mp4yt ?(.*)', fromMe: false , desc: "Use this if .v
         })
       })
       .catch(
-        async (err) => await message.sendMessage(errorMessage("Not Found" )),
+        async (err) => await message.sendMessage(errorMessage("Error.\n Filesize exceeded or invalid link" )),
       )
   },
 )
-
-
 
 Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false ,  dontAddCommandList: true}, async (message, match) => {
 
@@ -246,7 +308,7 @@ Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false ,  dontAddCommandList: 
            status,
 	  officialSite,
 	  summary,
-        } = response.data.result[0].show
+        } = response.data[0].show
 
    
         const msg = `
@@ -317,17 +379,26 @@ Asena.addCommand({ pattern: 'stinsta1 ?(.*)', fromMe: false, desc: "Download ins
         const {
           url,
           type,
+	  uploaded,	
+	expired,
+       filesize,
         } = response.data.result[0]
 
         const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
 
-        const msg = `${type}`
+        const typ = `${type}`
 	
-	 if (msg === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+	const msg = `
+        *${"Type"}*: ${type}    
+        *${"Uploaded at"}*: ${uploaded}
+        *${"Expire at"}*: ${expired}
+        *${"Filesize"}*: ${filesize}`
+	
+	 if (typ === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
           caption: msg,
         })}
 		 	 
-	if (msg === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+	if (typ === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
           caption: msg,
         })}
 
@@ -663,3 +734,52 @@ Asena.addCommand({ pattern: 'stinsta9 ?(.*)', fromMe: false, dontAddCommandList:
       )
   },
 )
+
+
+
+
+Asena.addCommand({ pattern: 'story ?(.*)', fromMe: false,  dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+	  uploaded,	
+	expired,
+       filesize,
+        } = response.data.result[0]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const typ = `${type}`
+	
+	const msg = `
+        *${"Type"}*: ${type}    
+        *${"Uploaded at"}*: ${uploaded}
+        *${"Expire at"}*: ${expired}
+        *${"Filesize"}*: ${filesize}`
+	
+	 if (typ === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (typ === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )
+  },
+)
+
+
