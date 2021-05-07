@@ -763,7 +763,7 @@ Asena.addCommand({ pattern: 'story ?(.*)', fromMe: false,  dontAddCommandList: t
 	
 	const msg = `
         *${"Type"}*: ${type}    
-        *${"Uploaded at"}*: ${uploaded}
+        *${"Upload at"}*: ${uploaded}
         *${"Expire at"}*: ${expired}
         *${"Filesize"}*: ${filesize}`
 	
@@ -781,5 +781,73 @@ Asena.addCommand({ pattern: 'story ?(.*)', fromMe: false,  dontAddCommandList: t
       )
   },
 )
+
+
+
+
+
+gis(match[1], async (error, result) => {
+        for (var i = 0; i < (result.length < 5 ? result.length : 5); i++) {
+            var get = got(result[i].url, {https: {rejectUnauthorized: false}});
+            var stream = get.buffer();
+                
+            stream.then(async (image) => {
+                await message.client.sendMessage(message.jid,image, MessageType.image);
+            });
+        }
+
+	
+	
+	Asena.addCommand({ pattern: 'igstory ?(.*)', fromMe: false,  dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage("Need username"))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+	gis(match[1], async (error, result) => {
+        for (var i = 0; i < (result.length < 20 ? result.length : 20); i++) {
+          
+        	
+    await axios
+      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .then(async (response) => {
+        const {
+          url,
+          type,
+	  uploaded,	
+	expired,
+       filesize,
+        } = response.data.result[i]
+
+        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+
+        const typ = `${type}`
+	
+	const msg = `
+        *${"Type"}*: ${type}    
+        *${"Upload at"}*: ${uploaded}
+        *${"Expire at"}*: ${expired}
+        *${"Filesize"}*: ${filesize}`
+	
+	 if (typ === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })}
+		 	 
+	if (typ === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          caption: msg,
+        })}
+
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("error")),
+      )}
+  },
+)
+
+
+
+
 
 
