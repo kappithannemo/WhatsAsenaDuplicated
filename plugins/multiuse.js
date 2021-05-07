@@ -290,7 +290,7 @@ Asena.addCommand({ pattern: 'mp4yt3 ?(.*)', fromMe: false ,  dontAddCommandList:
   },
 )
 
-Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false ,  dontAddCommandList: true}, async (message, match) => {
+Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "Get info related to tv series and shows"}, async (message, match) => {
 
     const userName = match[1]
 
@@ -785,20 +785,7 @@ Asena.addCommand({ pattern: 'story ?(.*)', fromMe: false,  dontAddCommandList: t
 
 
 
-
-gis(match[1], async (error, result) => {
-        for (var i = 0; i < (result.length < 5 ? result.length : 5); i++) {
-            var get = got(result[i].url, {https: {rejectUnauthorized: false}});
-            var stream = get.buffer();
-                
-            stream.then(async (image) => {
-                await message.client.sendMessage(message.jid,image, MessageType.image);
-            });
-        }
-
-	
-	
-	Asena.addCommand({ pattern: 'igstory ?(.*)', fromMe: false,  dontAddCommandList: true}, async (message, match) => {
+Asena.addCommand({ pattern: 'igstory ?(.*)', fromMe: false,  dontAddCommandList: true}, async (message, match) => {
 
     const userName = match[1]
 
