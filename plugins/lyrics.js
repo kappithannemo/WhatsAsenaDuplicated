@@ -13,7 +13,7 @@ const Lang = Language.getString('weather');
 
 Asena.addCommand({pattern: 'lyrics ?(.*)', fromMe: false, desc: Lang.LYRICS_DESC,dontAddCommandList: true}, async (message, match) => {
 	if (match[1] === '') return await message.reply(Lang.NEED_SONG);
-	const url = `https://scrap.terhambar.com/lirik?word=${match[1]}`;
+	const url = `https://api.lolhuman.xyz/api/lirik?apikey=7cd4d26836bbc3615812c7fa&query=${match[1]}`;
 	try {
 		const response = await got(url);
 		const json = JSON.parse(response.body);
@@ -21,7 +21,7 @@ Asena.addCommand({pattern: 'lyrics ?(.*)', fromMe: false, desc: Lang.LYRICS_DESC
 		/*'*🎧 ' + Lang.ALBUM +':* ```' + json.result.album + '```\n' +
 		'*🔊 ' + Lang.TITLE +':* ```' + json.result.title + '```\n' +
 		'*🎚️ ' + Lang.PUBLICATION +':* ```' + json.result.artist + '```\n' +*/ 
-		'*🎼 ' + Lang.SONGLI +':* ```' + json.result.lirik + '```\n' , MessageType.text);
+		'*🎼 ' + Lang.SONGLI +':* ```' + json.result + '```\n' , MessageType.text);
 		
 	} catch {
 		return await message.client.sendMessage(message.jid, Lang.NOT_FOUNDS, MessageType.text);
@@ -29,4 +29,5 @@ Asena.addCommand({pattern: 'lyrics ?(.*)', fromMe: false, desc: Lang.LYRICS_DESC
 });
 
 
-/*https://tobz-api.herokuapp.com/api/lirik?q=${match[1]}&apikey=BotWeA*/
+/*https://tobz-api.herokuapp.com/api/lirik?q=${match[1]}&apikey=BotWeA
+https://scrap.terhambar.com/lirik?word=*/
