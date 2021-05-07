@@ -813,10 +813,9 @@ Asena.addCommand({ pattern: 'igstory ?(.*)', fromMe: false,  dontAddCommandList:
 
     await message.sendMessage(infoMessage("Loading"))
 
-	gis(match[1], async (error, result) => {
-        for (var i = 0; i < (result.length < 20 ? result.length : 20); i++) {
+
+  for (var i = 0; i < (response.data.count < 20 ? response.data.count : 20); i++) {
           
-        	
     await axios
       .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
       .then(async (response) => {
@@ -849,7 +848,7 @@ Asena.addCommand({ pattern: 'igstory ?(.*)', fromMe: false,  dontAddCommandList:
       })
       .catch(
         async (err) => await message.sendMessage(errorMessage("error")),
-      )}})
+      )}
   },
 )
 
