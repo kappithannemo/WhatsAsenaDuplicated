@@ -185,7 +185,7 @@ Asena.addCommand({ pattern: 'mp3yt ?(.*)', fromMe: false, desc: "Try this if .so
         const msg = `*${"quality"}*: ${quality}\n*${"file size"}*: ${filesize}\n*${"url"}*: ${url}`
 	    
         await message.sendMessage(msg)
-        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.document, {
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.audio, {
          quoted : message.data
         })
       })
@@ -311,17 +311,37 @@ Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "Get info relat
         } = response.data[0].show
 
    
-        const msg = `
-        *${"Name"}*: ${name}    
-        *${"Type"}*: ${type}
-        *${"Type"}*: ${status}
-        *${"Summary"}*: ${summary}
-        *${"Official Site"}*: ${officialSite}`
+        const msg = `*${"Name"}*: ${name}\n*${"Type"}*: ${type}\n*${"Type"}*: ${status}\n*${"Summary"}*: ${summary}\n*${"Official Site"}*: ${officialSite}`
        
        await message.client.sendMessage(message.jid, msg , MessageType.text);
       })
       .catch(
         async (err) => await message.sendMessage(errorMessage("Not Found" )),
+      )
+  },
+)
+
+Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , dontAddCommandList: true}, async (message, match) => {
+
+ const userName = match[1]
+    
+  await axios
+      .get(`http://api.tvmaze.com/search/shows?q=${userName}`)
+      .then(async (response) => {
+        const {
+          original,
+        } = response.data[0].show.image
+
+        const profileBuffer = await axios.get(original, {responseType: 'arraybuffer'})
+     
+        const msg = ``
+       
+        await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          caption: msg,
+        })
+      })
+      .catch(
+        async (err) => await message.sendMessage(""),
       )
   },
 )
