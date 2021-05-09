@@ -58,7 +58,7 @@ Asena.addCommand({ pattern: 'pic ?(.*)', fromMe: false,  dontAddCommandList: tru
 
 */
 
-Asena.addCommand({ pattern: 'pinterest ?(.*)', fromMe: false,  desc: "Gives you a pic from pinterest"}, async (message, match) => {
+Asena.addCommand({ pattern: 'pint ?(.*)', fromMe: false,  desc: "Gives you a pic from pinterest"}, async (message, match) => {
     
         const userName = match[1]
         
