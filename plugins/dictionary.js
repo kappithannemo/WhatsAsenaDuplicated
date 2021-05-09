@@ -104,7 +104,7 @@ Asena.addCommand({ pattern: 'dict ?(.*)', fromMe: false,  dontAddCommandList: tr
 
       })
       .catch(
-        async (err) => await message.sendMessage(errorMessage("Error.\nCheck the word\n or perhaps it is a server issue")),
+        async (err) => await message.sendMessage(""),
       )}
   },
 )
