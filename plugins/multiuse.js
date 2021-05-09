@@ -31,27 +31,48 @@ const { errorMessage, infoMessage } = require('../helpers');
 	} catch {
 		return await message.client.sendMessage(message.jid, Lang.NOT_FOUNDS, MessageType.text);
 	}
-});
-
-
-Asena.addCommand({pattern: 'psong ?(.*)', fromMe: true }, async (message, match) => {
-	if (match[1] === '') return await message.reply(Lang.NEED_SONG);
-	const url = `https://tobz-api.herokuapp.com/api/joox?q=${match[1]}&apikey=BotWeA`;
-	try {
-		const response = await got(url);
-		const json = JSON.parse(response.body);
-		if (response.statusCode === 200) return await message.client.sendMessage(message.jid, '*🎼 ' + Lang.SONG +':* ```' + match[1] + '```\n\n' +
-		'*🎧 ' + Lang.ALBUM +':* ```' + json.result.album + '```\n' + 
-		'*🔊 ' + Lang.TITLE +':* ```' + json.result.judul + '```\n' +
-		'*🎚️ ' + Lang.PUBLICATION +':* ```' + json.result.dipublikasi + '```\n' + 
-		'*🎙️ ' + Lang.SONGL +':* ```' + json.result.mp3 + '```\n' , MessageType.text);
-		
-		return await message.sendMessage(json.result.mp3 , MessageType.audio, {mimetype: Mimetype.mp4audio, ptt: true});
-    
-	} catch {
-		return await message.client.sendMessage(message.jid, Lang.NOT_FOUNDS, MessageType.text);
-	}
 });*/
+
+
+Asena.addCommand({ pattern: 'joox ?(.*)', fromMe: false, dontAddCommandList: true}, async (message, match) => {
+
+    const userName = match[1]
+
+    if (!userName) return await message.sendMessage(errorMessage(Lang.NEED_WORDIGTV))
+
+    await message.sendMessage(infoMessage("Loading"))
+
+    await axios
+      .get(`https://gratisancok.herokuapp.com/api/joox/?kata=${userName}&apikey=ZailaniGans`)
+      .then(async (response) => {
+        const {
+          mp3_url,
+          judul,
+	artist,
+	album,	
+        } = response.data.result.result
+
+        const profileBuffer = await axios.get(mp3_url, {responseType: 'arraybuffer'})
+
+        const msg = `${"Title"}*: ${judul}\n${"Artist"}*: ${artist}\n${"Album"}*: ${album}`
+
+	 await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.audio, {
+          caption: msg,
+        })
+        
+      })
+      .catch(
+        async (err) => await message.sendMessage(errorMessage("Error.Please check the song name.")),
+      )
+  },
+)
+
+
+
+
+
+
+
 
 Asena.addCommand({ pattern: 'insta ?(.*)', fromMe: false, desc: "Download content from insta link"}, async (message, match) => {
 
