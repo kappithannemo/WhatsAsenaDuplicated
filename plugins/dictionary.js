@@ -3,14 +3,15 @@ Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
 WhatsAsenaDuplicated
 */
-
 const Asena = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
-const got = require('got');
-const Config = require('../config');
+/*const got = require('got');
+const fs = require('fs');*/
+const axios = require('axios');
 
 const Language = require('../language');
 const Lang = Language.getString('weather');
+const { errorMessage, infoMessage } = require('../helpers');
 
 
 Asena.addCommand({pattern: 'lngcode', fromMe: false, dontAddCommandList: true}, (async (message, match) => {    
