@@ -29,7 +29,7 @@ Asena.addCommand({ pattern: 'pic ?(.*)', fromMe: false,  dontAddCommandList: tru
         })
       })
       .catch(
-        async (err) => await message.sendMessage("Error")),
+        async (err) => await message.sendMessage("Error"),
       )
   },
 
@@ -59,7 +59,7 @@ Asena.addCommand({ pattern: 'pinterest ?(.*)', fromMe: false,  desc: "Gives you 
         })
       })
       .catch(
-        async (err) => await message.sendMessage("Error")),
+        async (err) => await message.sendMessage("Error"),
       )
   },
 
