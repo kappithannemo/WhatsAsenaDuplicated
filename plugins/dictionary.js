@@ -80,7 +80,7 @@ Asena.addCommand({ pattern: 'dict ?(.*)', fromMe: false,  dontAddCommandList: tr
     await message.sendMessage(infoMessage("Loading"))
 
 	
-  for (var i = 0;  i++) {
+
    for (var i = 0; i < 5 ; i++) {
 	  
     await axios
