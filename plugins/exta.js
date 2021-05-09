@@ -5,14 +5,12 @@ WhatsAsenaDuplicated
 */
 
 const Asena = require('../events');
-const {MessageType} = require('@adiwajshing/baileys');
-/*const got = require('got');
-const fs = require('fs');*/
+const { MessageType } = require('@adiwajshing/baileys');
 const axios = require('axios');
 
 const Language = require('../language');
-const Lang = Language.getString('weather');
 const { errorMessage, infoMessage } = require('../helpers');
+const Lang = Language.getString('instagram') ;
 
 
 
@@ -60,7 +58,9 @@ Asena.addCommand({ pattern: 'pic ?(.*)', fromMe: false,  dontAddCommandList: tru
 
 
 Asena.addCommand({ pattern: 'pinterest ?(.*)', fromMe: false,  desc: "Gives you a pic from pinterest"}, async (message, match) => {
-
+    
+        const userName = match[1]
+        
     if (!userName) return await message.sendMessage("pic of what?")
 
     await message.sendMessage(infoMessage("Loading"))
