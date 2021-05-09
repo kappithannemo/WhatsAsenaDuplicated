@@ -309,7 +309,7 @@ Asena.addCommand({ pattern: 'mp4yt3 ?(.*)', fromMe: false ,  dontAddCommandList:
   },
 )
 
-Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "Get info related to tv series and shows"}, async (message, match) => {
+Asena.addCommand({ pattern: 'show ?(.*)', fromMe: false , desc: "Get info related to tv series and shows"}, async (message, match) => {
 
     const userName = match[1]
 
@@ -340,7 +340,7 @@ Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , desc: "Get info relat
   },
 )
 
-Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , dontAddCommandList: true}, async (message, match) => {
+Asena.addCommand({ pattern: 'show ?(.*)', fromMe: false , dontAddCommandList: true}, async (message, match) => {
 
  const userName = match[1]
     
@@ -365,7 +365,7 @@ Asena.addCommand({ pattern: 'shows ?(.*)', fromMe: false , dontAddCommandList: t
   },
 )
 
-Asena.addCommand({ pattern: 'pint ?(.*)', fromMe: false, desc: "download from pinterest links" }, async (message, match) => {
+Asena.addCommand({ pattern: 'lipint ?(.*)', fromMe: false, desc: "download from pinterest links" }, async (message, match) => {
 
     const userName = match[1]
 
