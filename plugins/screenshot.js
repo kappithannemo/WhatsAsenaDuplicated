@@ -17,7 +17,7 @@ Asena.addCommand({pattern: 'ss ?(.*)', fromMe: false, desc: Lang.SS_DESC}, (asyn
 
     if (match[1] === '') return await message.sendMessage(Lang.LİNK);
 
-    var webimage = await axios.get(`https://screenshotapi.net/api/v1/screenshot?url=${match[1]}&output=image&full_page=true`, { responseType: 'arraybuffer' })
+    var webimage = await axios.get(`https://image.thum.io/get/${match[1]}`, { responseType: 'arraybuffer' })
 
     await message.sendMessage(Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg,quoted:message.data})
 
@@ -51,7 +51,7 @@ Asena.addCommand({pattern: 'emoji ?(.*)', fromMe: false, dontAddCommandList: tru
 
     if (match[1] === '') return await message.sendMessage(Lang.LİNK);
 
-    var webimage = await axios.get(`https://videfikri.com/api/emojitopng/?emojicode=${match[1]}`, { responseType: 'arraybuffer' })
+    var webimage = await axios.get(`https://docs-jojo.herokuapp.com/api/emoji2png?emoji=${match[1]}&type=whatsapp`, { responseType: 'arraybuffer' })
 
     await message.sendMessage(Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png,quoted:message.data})
 
