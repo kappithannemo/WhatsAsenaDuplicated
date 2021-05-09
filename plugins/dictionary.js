@@ -64,7 +64,7 @@ Asena.addCommand({pattern: 'lngcode', fromMe: false, dontAddCommandList: true}, 
 
 
 
-Asena.addCommand({ pattern: 'dict ?(.*)', fromMe: false,  dontAddCommandList: true }, async (message, match) => {
+Asena.addCommand({ pattern: 'dict ?(.*)', fromMe: false, desc: "Use it as a dictionary.\nEg: .dict en_US;lead\n For supporting languages send *.lngcode*" }, async (message, match) => {
 
     if (!match[1]) return await message.sendMessage(errorMessage("Need word"))
 
