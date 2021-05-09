@@ -81,7 +81,8 @@ Asena.addCommand({ pattern: 'dict ?(.*)', fromMe: false,  dontAddCommandList: tr
 
 	
   for (var i = 0;  i++) {
-          
+   for (var i = 0; i < 5 ; i++) {
+	  
     await axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/${langcode}/${word}`)
       .then(async (response) => {
