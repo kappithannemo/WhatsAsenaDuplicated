@@ -16,12 +16,12 @@ const Lang = Language.getString('instagram') ;
 
 
 
-
+ /*
 
 Asena.addCommand({ pattern: 'pic ?(.*)', fromMe: false,  dontAddCommandList: true}, async (message, match) => {
-
+ const userName = match[1]
         
-    var nos , userName;
+   var nos , userName;
     if (match[1].includes(';')) {
         var split = match[1].split(';');
          nos = split[1];
@@ -33,14 +33,15 @@ Asena.addCommand({ pattern: 'pic ?(.*)', fromMe: false,  dontAddCommandList: tru
 
     await message.sendMessage(infoMessage("Loading"))
           
+     
     await axios
       .get(`https://gratisancok.herokuapp.com/api/googleimage?kata=${userName}&apikey=ZailaniGans`)
       .then(async (response) => {
         const {
-          nos,
+          [0],
         } = response.data.result.result
 
-        const profileBuffer = await axios.get(nos, {responseType: 'arraybuffer'})
+        const profileBuffer = await axios.get([0], {responseType: 'arraybuffer'})
 
         const msg = ``
 
@@ -55,7 +56,7 @@ Asena.addCommand({ pattern: 'pic ?(.*)', fromMe: false,  dontAddCommandList: tru
 
  )
 
-
+*/
 
 Asena.addCommand({ pattern: 'pinterest ?(.*)', fromMe: false,  desc: "Gives you a pic from pinterest"}, async (message, match) => {
     
@@ -74,11 +75,12 @@ Asena.addCommand({ pattern: 'pinterest ?(.*)', fromMe: false,  desc: "Gives you 
 
         const profileBuffer = await axios.get(result, {responseType: 'arraybuffer'})
 
-        const msg = ``
+        const msg = `${result}`
 
         await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
           caption: msg
         })
+            await message.sendMessage(message.jid, msg,MessageType.text,{quoted:message.data})
       })
       .catch(
         async (err) => await message.sendMessage("Error"),
