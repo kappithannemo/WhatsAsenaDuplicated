@@ -54,12 +54,10 @@ Asena.addCommand({ pattern: 'joox ?(.*)', fromMe: false, dontAddCommandList: tru
 
         const profileBuffer = await axios.get(mp3_url, {responseType: 'arraybuffer'})
 
-        const msg = `${"Title"}*: ${judul}\n${"Artist"}*: ${artist}\n${"Album"}*: ${album}`
+        const msg = `${"Title"}*: ${judul}\n${"Artist"}*: ${artist}\n${"Album"}*: ${album}\n${mp3_url}`
 
-	 await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.audio, {
-          caption: msg,
-        })
-        
+	 await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.document)
+	    await message.sendMessage(message.jid,msg, MessageType.document,)
       })
       .catch(
         async (err) => await message.sendMessage(errorMessage("Error.Please check the song name.")),
