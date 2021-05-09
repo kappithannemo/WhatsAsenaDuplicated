@@ -64,7 +64,7 @@ Asena.addCommand({ pattern: 'pint ?(.*)', fromMe: false,  desc: "Gives you a pic
         
     if (!userName) return await message.sendMessage("pic of what?")
 
-    await message.sendMessage(infoMessage("Loading"))
+    await message.sendMessage(" ")
           
     await axios
       .get(`https://gratisancok.herokuapp.com/api/pinterest?kata=${userName}&apikey=ZailaniGans`)
@@ -83,7 +83,7 @@ Asena.addCommand({ pattern: 'pint ?(.*)', fromMe: false,  desc: "Gives you a pic
             await message.sendMessage(message.jid, msg,MessageType.text,{quoted:message.data})
       })
       .catch(
-        async (err) => await message.sendMessage("Error"),
+        async (err) => await message.sendMessage(""),
       )
   },
 
