@@ -397,7 +397,7 @@ Asena.addCommand({ pattern: 'pint ?(.*)', fromMe: false, desc: "download from pi
 
 
 
-Asena.addCommand({ pattern: 'igstory ?(.*)', fromMe: false,  desc:"Download instagram stories of the given username"}, async (message, match) => {
+Asena.addCommand({ pattern: 'story ?(.*)', fromMe: false,  desc:"Download instagram stories of the given username"}, async (message, match) => {
 
     const userName = match[1]
 
