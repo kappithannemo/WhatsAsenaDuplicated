@@ -223,8 +223,6 @@ Asena.addCommand({ pattern: 'dict ?(.*)', fromMe: false, desc: "Use it as a dict
 	    
 
       })
-      .catch(
-        async (err) => await message.sendMessage("error"),
-      )
+      
   },
 )
