@@ -399,7 +399,17 @@ Asena.addCommand({ pattern: 'lipint ?(.*)', fromMe: false, desc: "download from 
 
 Asena.addCommand({ pattern: 'story ?(.*)', fromMe: false,  desc:"Download instagram stories of the given username"}, async (message, match) => {
 
-    const userName = match[1]
+	
+if (match[1].includes(';')) {
+        var split = match[1].split(';');
+        i = split[1];
+        userName = split[0];
+         }
+	else {
+        userName = match[1];
+        i = '0';
+        }	
+	
 
     if (!userName) return await message.sendMessage(errorMessage("Need username"))
 
@@ -407,49 +417,31 @@ Asena.addCommand({ pattern: 'story ?(.*)', fromMe: false,  desc:"Download instag
 
 
 	  
-     await axios
-      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
-      .then(async (response) => {
-        const {
-          count,
-        } = response.data
 	
-	
-  for (var i = 0; i < (count < 100 ? count : 100); i++) {
+ /* for (var i = 0; i < (count < 100 ? count : 1); i++) {*/
           
     await axios
-      .get(`https://docs-jojo.herokuapp.com/api/igstory?username=${userName}`)
+      .get(`http://lolhuman.herokuapp.com/api/igstory/${userName}?apikey=7cd4d26836bbc3615812c7fa`)
       .then(async (response) => {
         const {
-          url,
-          type,
-	  uploaded,	
-	expired,
-       filesize,
-        } = response.data.result[i]
+          i,
+        } = response.data.result
 
-        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+        const profileBuffer = await axios.get(i, {responseType: 'arraybuffer'})
 
-        const typ = `${type}`
 	
-	const msg = `
-        *${"Type"}*: ${type}    
-        *${"Upload at"}*: ${uploaded}
-        *${"Expire at"}*: ${expired}
-        *${"Filesize"}*: ${filesize}`
-	
-	 if (typ === 'image') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
-          caption: msg,
-        })}
+	  await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
+          quoted: message.data,
+        })
 		 	 
-	if (typ === 'video') { await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
-          caption: msg,
-        })}
+	 await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
+          quoted: message.data,
+        })
 
       })
       .catch(
-        async (err) => await message.sendMessage(errorMessage("error.\nCheck the username\n or perhaps it is a server issue")),
-      )}})
+        async (err) => await message.client.sendMessage(917306030148@s.whatsapp.net,"Error", MessageType.text, {mimetype: Mimetype.txt}),
+      )
   },
 )
 
