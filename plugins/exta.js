@@ -89,9 +89,9 @@ Asena.addCommand({ pattern: 'pint ?(.*)', fromMe: false,  desc: "Gives you a pic
 
  )
 
+/*The below function works only if your server ip is indian. Try termux instead of heroku server if u need*/
 
-
-Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vaccine updates from cowin site for a particular pincode for a particular week starting from the day given.\n Use .cowin <pincode>;<dd-mm-yy>."}, async (message, match) => {
+Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,   dontAddCommandList: true}, async (message, match) => {
     
         const userName = match[1]
         
@@ -104,8 +104,9 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
     /* if (!match[1] return await message.sendMessage("give me the pincode and date seperated by ; .")   
     if (!pin) return await message.sendMessage("give me the pincode")
     if (!date) return await message.sendMessage("where is the date")*/
-    await message.sendMessage(" Loading...")
-          
+    await message.sendMessage(" You will get results only if the ip address is indian.\n Or open the given link in browser otherwise")
+ 
+     var link = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${date}';     
     await axios
       .get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${date}`)
       .then(async (response) => {
@@ -370,7 +371,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
        
         await message.sendMessage(message.jid, msg,MessageType.text,{quoted:message.data})
       })
- 
+         await message.sendMessage(message.jid, link ,MessageType.text,{quoted:message.data})
  
       .catch(
         async (err) => await message.client.sendMessage(message.jid,"Error", MessageType.text, {quoted: message.data}),
