@@ -101,10 +101,10 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
         date = split[1];
         pin = split[0];
 }
-     if (!match[1] return await message.sendMessage("give me the pincode and date seperated by ; .")   
+    /* if (!match[1] return await message.sendMessage("give me the pincode and date seperated by ; .")   
     if (!pin) return await message.sendMessage("give me the pincode")
-    if (!date) return await message.sendMessage("where is the date")
-    await message.sendMessage(" ")
+    if (!date) return await message.sendMessage("where is the date")*/
+    await message.sendMessage(" Loading...")
           
     await axios
       .get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${date}`)
