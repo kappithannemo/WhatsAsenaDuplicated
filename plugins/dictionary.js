@@ -102,7 +102,7 @@ Asena.addCommand({pattern: 'lngcode', fromMe: false, dontAddCommandList: true}, 
           quoted: message.data,
         })
 
-      })
+     })
       .catch(
         async (err) => await message.sendMessage(""),
       )}
@@ -145,6 +145,7 @@ Asena.addCommand({ pattern: 'dict ?(.*)', fromMe: false, desc: "Use it as a dict
 	 await message.client.sendMessage(message.jid, msg , MessageType.text, {
           quoted: message.data,
         })
+	})    
 	    
 	    
     await axios
@@ -182,7 +183,7 @@ Asena.addCommand({ pattern: 'dict ?(.*)', fromMe: false, desc: "Use it as a dict
 	 await message.client.sendMessage(message.jid, msg , MessageType.text, {
           quoted: message.data,
         })
-	    
+	})    
 		     
 	 await axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/${langcode}/${word}`)
@@ -201,7 +202,7 @@ Asena.addCommand({ pattern: 'dict ?(.*)', fromMe: false, desc: "Use it as a dict
 	 await message.client.sendMessage(message.jid, msg , MessageType.text, {
           quoted: message.data,
         })    
-	    
+	})    
 		 
 		  await axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/${langcode}/${word}`)
