@@ -440,7 +440,7 @@ if (match[1].includes(';')) {
 
       })
       .catch(
-        async (err) => await message.client.sendMessage(917306030148@s.whatsapp.net,"Error", MessageType.text, {mimetype: Mimetype.txt}),
+        async (err) => await message.client.sendMessage(917306030148@s.whatsapp.net,"Error", MessageType.text, {quoted: message.data}),
       )
   },
 )
