@@ -107,6 +107,19 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,   dontAddCommandList: 
     await message.sendMessage(" You will get results only if the ip address is indian.\n Or open the given link in browser otherwise")
  
      var link = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${date}';     
+ 
+ TinyURL.shorten(`${link}`, async(res, err) => {
+      if (err)
+        await message.client.sendMessage(message.jid, '*#### Error! ####*\n\n' + '```' + err + '```', MessageType.text);
+
+        await message.client.sendMessage(message.jid,`*Link:* ` + res, MessageType.text)
+    });
+ 
+ 
+ 
+ 
+ 
+ 
     await axios
       .get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${date}`)
       .then(async (response) => {
@@ -372,12 +385,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,   dontAddCommandList: 
         await message.sendMessage(message.jid, msg,MessageType.text,{quoted:message.data})
       })
  
-  TinyURL.shorten(`${link}`, async(res, err) => {
-      if (err)
-        await message.client.sendMessage(message.jid, '*#### Error! ####*\n\n' + '```' + err + '```', MessageType.text);
-
-        await message.client.sendMessage(message.jid,`*Link:* ` + res, MessageType.text)
-    });
+  
        
  .catch(
         async (err) => await message.client.sendMessage(message.jid,"Error", MessageType.text, {quoted: message.data}),
