@@ -7,7 +7,7 @@ WhatsAsenaDuplicated
 const Asena = require('../events');
 const { MessageType } = require('@adiwajshing/baileys');
 const axios = require('axios');
-
+const TinyURL = require('tinyurl');
 const Language = require('../language');
 const { errorMessage, infoMessage } = require('../helpers');
 const Lang = Language.getString('instagram') ;
@@ -371,9 +371,15 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,   dontAddCommandList: 
        
         await message.sendMessage(message.jid, msg,MessageType.text,{quoted:message.data})
       })
-         await message.sendMessage(message.jid, link ,MessageType.text,{quoted:message.data})
  
-      .catch(
+  TinyURL.shorten(`${link}`, async(res, err) => {
+      if (err)
+        await message.client.sendMessage(message.jid, '*#### Error! ####*\n\n' + '```' + err + '```', MessageType.text);
+
+        await message.client.sendMessage(message.jid,`*Link:* ` + res, MessageType.text)
+    });
+       
+ .catch(
         async (err) => await message.client.sendMessage(message.jid,"Error", MessageType.text, {quoted: message.data}),
       )
   },
