@@ -439,9 +439,9 @@ if (match[1].includes(';')) {
         })
 
       })
-      .catch(
-        async (err) => await message.client.sendMessage(917306030148@s.whatsapp.net,"Error", MessageType.text, {quoted: message.data}),
-      )
+      /*.catch(
+        async (err) => await message.client.sendMessage(message.jid,"Error", MessageType.text, {quoted: message.data}),
+      )*/
   },
 )
 
