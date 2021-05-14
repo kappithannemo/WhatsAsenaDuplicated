@@ -105,10 +105,10 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,   dontAddCommandList: 
     if (!pin) return await message.sendMessage("give me the pincode")
     if (!date) return await message.sendMessage("where is the date")*/
     await message.sendMessage(" You will get results only if the ip address is indian.\n Or open the given link in browser otherwise")
+  await message.sendMessage("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${date}")
+  
  
-     var link = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${date}';     
- 
- TinyURL.shorten(`${link}`, async(res, err) => {
+ TinyURL.shorten(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${pin}&date=${date}`, async(res, err) => {
       if (err)
         await message.client.sendMessage(message.jid, '*#### Error! ####*\n\n' + '```' + err + '```', MessageType.text);
 
