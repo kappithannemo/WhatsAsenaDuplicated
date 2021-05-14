@@ -427,9 +427,9 @@ if (match[1].includes(';')) {
           i,
         } = response.data.result
 
-        const profileBuffer = await axios.get(i, {responseType: 'arraybuffer'})
+        const profileBuffer = await axios.get('i', {responseType: 'arraybuffer'})
 
-	
+	await message.sendMessage(i)
 	  await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.image, {
           quoted: message.data,
         })
