@@ -373,7 +373,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
  
  
       .catch(
-        async (err) => await message.client.sendMessage(917306030148@s.whatsapp.net,"Error", MessageType.text, {quoted: message.data}),
+        async (err) => await message.client.sendMessage(message.jid,"Error", MessageType.text, {quoted: message.data}),
       )
   },
 
