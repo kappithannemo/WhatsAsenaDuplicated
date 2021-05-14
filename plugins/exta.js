@@ -119,7 +119,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
         from,
         to,
         fee_type,
-        } = response.data.centres[0]
+        } = response.data.centers[0]
 
 
         const msg = `*${"Centre name"}*: ${name}\n*${"Address"}*: ${address}\n*${"State"}*: ${state_name}\n*${"District"}*: ${district_name}\n*${"Block"}*: ${block_name}\n*${"Pincode"}*: ${pincode}\n*${"From"}*: ${from}\n*${"To"}*: ${to}\n*${"Fee"}*: ${fee_type}\n`
@@ -137,7 +137,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
           available_capacity,
          min_age_limit,
          vaccine,
-        } = response.data.centres[0].sessions[0]
+        } = response.data.centers[0].sessions[0]
 
 
         const msg = `*${"Min Age Limit"}*: ${min_age_limit}\n*${"Date"}*: ${date}\n*${"Available capacity"}*: ${available_capacity}\n*${"Vaccine"}*: ${vaccine}\n\n`
@@ -160,7 +160,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
         from,
         to,
         fee_type,
-        } = response.data.centres[1]
+        } = response.data.centers[1]
 
 
         const msg = `*${"Centre name"}*: ${name}\n*${"Address"}*: ${address}\n*${"State"}*: ${state_name}\n*${"District"}*: ${district_name}\n*${"Block"}*: ${block_name}\n*${"Pincode"}*: ${pincode}\n*${"From"}*: ${from}\n*${"To"}*: ${to}\n*${"Fee"}*: ${fee_type}\n`
@@ -180,7 +180,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
           available_capacity,
          min_age_limit,
          vaccine,
-        } = response.data.centres[0].sessions[0]
+        } = response.data.centers[0].sessions[0]
 
 
         const msg = `*${"Min Age Limit"}*: ${min_age_limit}\n*${"Date"}*: ${date}\n*${"Available capacity"}*: ${available_capacity}\n*${"Vaccine"}*: ${vaccine}\n\n`
@@ -198,7 +198,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
           available_capacity,
          min_age_limit,
          vaccine,
-        } = response.data.centres[0].sessions[1]
+        } = response.data.centers[0].sessions[1]
 
 
         const msg = `*${"Min Age Limit"}*: ${min_age_limit}\n*${"Date"}*: ${date}\n*${"Available capacity"}*: ${available_capacity}\n*${"Vaccine"}*: ${vaccine}\n\n`
@@ -221,7 +221,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
         from,
         to,
         fee_type,
-        } = response.data.centres[2]
+        } = response.data.centers[2]
 
 
         const msg = `*${"Centre name"}*: ${name}\n*${"Address"}*: ${address}\n*${"State"}*: ${state_name}\n*${"District"}*: ${district_name}\n*${"Block"}*: ${block_name}\n*${"Pincode"}*: ${pincode}\n*${"From"}*: ${from}\n*${"To"}*: ${to}\n*${"Fee"}*: ${fee_type}\n`
@@ -239,7 +239,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
           available_capacity,
          min_age_limit,
          vaccine,
-        } = response.data.centres[2].sessions[0]
+        } = response.data.centers[2].sessions[0]
 
 
         const msg = `*${"Min Age Limit"}*: ${min_age_limit}\n*${"Date"}*: ${date}\n*${"Available capacity"}*: ${available_capacity}\n*${"Vaccine"}*: ${vaccine}\n\n`
@@ -262,7 +262,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
         from,
         to,
         fee_type,
-        } = response.data.centres[3]
+        } = response.data.centers[3]
 
 
         const msg = `*${"Centre name"}*: ${name}\n*${"Address"}*: ${address}\n*${"State"}*: ${state_name}\n*${"District"}*: ${district_name}\n*${"Block"}*: ${block_name}\n*${"Pincode"}*: ${pincode}\n*${"From"}*: ${from}\n*${"To"}*: ${to}\n*${"Fee"}*: ${fee_type}\n`
@@ -280,7 +280,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
           available_capacity,
          min_age_limit,
          vaccine,
-        } = response.data.centres[3].sessions[0]
+        } = response.data.centers[3].sessions[0]
 
 
         const msg = `*${"Min Age Limit"}*: ${min_age_limit}\n*${"Date"}*: ${date}\n*${"Available capacity"}*: ${available_capacity}\n*${"Vaccine"}*: ${vaccine}\n\n`
@@ -304,7 +304,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
         from,
         to,
         fee_type,
-        } = response.data.centres[4]
+        } = response.data.centers[4]
 
 
         const msg = `*${"Centre name"}*: ${name}\n*${"Address"}*: ${address}\n*${"State"}*: ${state_name}\n*${"District"}*: ${district_name}\n*${"Block"}*: ${block_name}\n*${"Pincode"}*: ${pincode}\n*${"From"}*: ${from}\n*${"To"}*: ${to}\n*${"Fee"}*: ${fee_type}\n`
@@ -322,7 +322,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
           available_capacity,
          min_age_limit,
          vaccine,
-        } = response.data.centres[4].sessions[0]
+        } = response.data.centers[4].sessions[0]
 
 
         const msg = `*${"Min Age Limit"}*: ${min_age_limit}\n*${"Date"}*: ${date}\n*${"Available capacity"}*: ${available_capacity}\n*${"Vaccine"}*: ${vaccine}\n\n`
@@ -344,7 +344,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
         from,
         to,
         fee_type,
-        } = response.data.centres[5]
+        } = response.data.centers[5]
 
 
         const msg = `*${"Centre name"}*: ${name}\n*${"Address"}*: ${address}\n*${"State"}*: ${state_name}\n*${"District"}*: ${district_name}\n*${"Block"}*: ${block_name}\n*${"Pincode"}*: ${pincode}\n*${"From"}*: ${from}\n*${"To"}*: ${to}\n*${"Fee"}*: ${fee_type}\n`
@@ -362,7 +362,7 @@ Asena.addCommand({ pattern: 'cowin ?(.*)', fromMe: false,  desc: "Gives you vacc
           available_capacity,
          min_age_limit,
          vaccine,
-        } = response.data.centres[5].sessions[0]
+        } = response.data.centers[5].sessions[0]
 
 
         const msg = `*${"Min Age Limit"}*: ${min_age_limit}\n*${"Date"}*: ${date}\n*${"Available capacity"}*: ${available_capacity}\n*${"Vaccine"}*: ${vaccine}\n\n`
