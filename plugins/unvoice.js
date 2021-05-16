@@ -67,7 +67,7 @@ let id = match[1];
         .format('mp4')
         .save('output.mp4')
         .on('end', async () => {
-            await message.client.sendMessage(id, fs.readFileSync('output.mp4'), MessageType.video, {mimetype: Mimetype.mpeg,quoted:message.data});
+            await message.client.sendMessage(id, fs.readFileSync('output.mp4'), MessageType.video, {mimetype: Mimetype.mpeg});
 });}));
 
 
@@ -93,6 +93,13 @@ Asena.addCommand({pattern: 'unvideo', fromMe: false, dontAddCommandList: true}, 
 }));
 
 
+Asena.addCommand({pattern: 'sm ?(.*)', fromMe: true,  dontAddCommandList: true}, (async (message, match) => {    
+    if (message.reply_message === false);
+  let msg = message.reply_message
+let id = match[1];
+
+    await message.client.sendMessage(id, msg , MessageType.text);
+}));
 
 
 
