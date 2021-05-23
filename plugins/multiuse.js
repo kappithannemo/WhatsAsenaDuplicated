@@ -120,21 +120,32 @@ Asena.addCommand({ pattern: 'fb ?(.*)', fromMe: false, desc: Lang.FBDESC }, asyn
     await message.sendMessage(infoMessage(Lang.LOADINGTV))
 
     await axios
-      .get(`https://videfikri.com/api/fbdl/?urlfb=${userName}`)
+      .get(`https://scrap.terhambar.com/fb?link=${userName}`)
       .then(async (response) => {
         const {
-          url,
-          judul,
-        } = response.data.result
+          sdQuality,
+        } = response.data.result.linkVideo
 
-        const profileBuffer = await axios.get(url, {responseType: 'arraybuffer'})
+        const profileBuffer = await axios.get(sdQuality, {responseType: 'arraybuffer'})
 
-        const msg = `*${Lang.CAPTION}*: ${judul}`
 
         await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
-          caption: msg,
+          quoted: message.data,
         })
       })
+	 await axios
+      .get(`https://scrap.terhambar.com/fb?link=${userName}`)
+      .then(async (response) => {
+        const {
+          title,
+        } = response.data.result
+
+        const msg = `*${"Title"}*: ${title}`
+
+        
+       await message.client.sendMessage(message.jid, msg , MessageType.text);
+      })
+	
       .catch(
         async (err) => await message.sendMessage(errorMessage(Lang.NOT_FOUNDFB )),
       )
