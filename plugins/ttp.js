@@ -282,7 +282,7 @@ Asena.addCommand({pattern: 'sandwriting ?(.*)', fromMe: false, dontAddCommandLis
 
     var webimage = await axios.get(`https://api.xteam.xyz/textpro/cloudtext?text=${match[1]}&APIKEY=e248b81cffae4586`, { responseType: 'arraybuffer' })
 
-   await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: 'Made by WhatsAsenaPublic'})
+   await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: ':)'})
 
     }));
 
@@ -300,7 +300,7 @@ Asena.addCommand({pattern: 'sandwriting ?(.*)', fromMe: false, dontAddCommandLis
 
     var webimage = await axios.get(`https://api.xteam.xyz/textpro/ph?text=${topText}&text2=${bottomText}&APIKEY=e248b81cffae4586`, { responseType: 'arraybuffer' })
 
-   await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg , caption: 'Made by WhatsAsenaPublic'})
+   await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg , caption: ':)'})
 
     }));
 
@@ -310,7 +310,7 @@ Asena.addCommand({pattern: 'snow ?(.*)', fromMe: false, dontAddCommandList: true
 
     var webimage = await axios.get(`https://api.xteam.xyz/textpro/snowtext?text=${match[1]}&APIKEY=e248b81cffae4586`, { responseType: 'arraybuffer' })
 
-   await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: 'Made by WhatsAsenaPublic'})
+   await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: ':)  '})
 
     }));
 
@@ -320,7 +320,7 @@ Asena.addCommand({pattern: 'snow ?(.*)', fromMe: false, dontAddCommandList: true
 
     var webimage = await axios.get(`https://api.xteam.xyz/textpro/bloodontheroastedglass?text=${match[1]}&APIKEY=e248b81cffae4586`, { responseType: 'arraybuffer' })
 
-   await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: 'Made by WhatsAsenaPublic'})
+   await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: ':)'})
 
     }));
 
@@ -330,7 +330,7 @@ Asena.addCommand({pattern: 'snow ?(.*)', fromMe: false, dontAddCommandList: true
 
     var webimage = await axios.get(`https://videfikri.com/api/textmaker/paperonglass/?text=${match[1]}`, { responseType: 'arraybuffer' })
 
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: 'Made by WhatsAsenaPublic'})
+    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: ':)'})
 
     }));
 
@@ -340,7 +340,7 @@ Asena.addCommand({pattern: 'snow ?(.*)', fromMe: false, dontAddCommandList: true
 
     var webimage = await axios.get(`https://videfikri.com/api/textmaker/candlemug/?text=${match[1]}`, { responseType: 'arraybuffer' })
 
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: 'Made by WhatsAsenaPublic'})
+    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: ':)'})
 
     }));
 
@@ -350,7 +350,7 @@ Asena.addCommand({pattern: 'snow ?(.*)', fromMe: false, dontAddCommandList: true
 
     var webimage = await axios.get(`https://videfikri.com/api/textmaker/romancetext/?text=${match[1]}`, { responseType: 'arraybuffer' })
 
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: 'Made by WhatsAsenaPublic'})
+    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: ':)'})
 
     }));
 
@@ -360,7 +360,7 @@ Asena.addCommand({pattern: 'snow ?(.*)', fromMe: false, dontAddCommandList: true
 
     var webimage = await axios.get(`https://videfikri.com/api/textmaker/lovemsg/?text=${match[1]}`, { responseType: 'arraybuffer' })
 
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: 'Made by WhatsAsenaPublic'})
+    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.jpg, caption: ':)'})
 
     }));
 
