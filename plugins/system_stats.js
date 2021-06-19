@@ -16,13 +16,20 @@ const chalk = require('chalk');
 const Language = require('../language');
 const Lang = Language.getString('system_stats');
 
+const Asena = require('../events');
+const {MessageType} = require('@adiwajshing/baileys');
+const {spawnSync} = require('child_process');
+const Config = require('../config');
+const chalk = require('chalk');
+const axios = require('axios');
+const Language = require('../language');
+const Lang = Language.getString('system_stats');
+
 Asena.addCommand({pattern: 'alive', fromMe: false, desc: Lang.ALIVE_DESC}, (async (message, match) => {
-    if (Config.ALIVEMSG == 'default') {
-        await message.client.sendMessage(message.jid,'```Bot is alive!```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n Type .help for command list \n' , MessageType.text);
-    }
-    else {
-        await message.client.sendMessage(message.jid,Config.ALIVEMSG, MessageType.text);
-    }
+        
+        let pp
+        try { pp = await message.client.getProfilePicture(message.jid.includes('-') ? message.data.participant : message.jid ); } catch { pp = await message.client.getProfilePicture(); }
+        await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => { await message.client.sendMessage(message.jid, res.data, MessageType.image, { caption: Config.ALIVEMSG }); });
 }));
 
 Asena.addCommand({pattern: 'sysd', fromMe: false, desc: Lang.SYSD_DESC}, (async (message, match) => {
