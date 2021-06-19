@@ -62,3 +62,18 @@ Asena.addCommand({on: 'text', fromMe: false}, (async (message, match) => {
         }
     );
 }));
+
+Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommandList: true}, (async (message, match) => {
+    var filtreler = await FilterDb.getFilter(message.jid);
+    if (!filtreler) return; 
+    return filtreler.map(
+        async (filter) => {
+            pattern = new RegExp(filter.dataValues.regex ? filter.dataValues.pattern : ('\\b(' + filter.dataValues.pattern + ')\\b'), 'gm');
+            var fo = message.message.replace('$', '')
+            if (fo == filter.dataValues.pattern && message.message.startsWith('$')) {
+                await new Promise(r => setTimeout(r, 100));
+                return await message.client.sendMessage(message.jid,filter.dataValues.text, MessageType.text, {quoted: message.data});
+            }
+        }
+    );
+}));
