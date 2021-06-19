@@ -49,7 +49,7 @@ Asena.addCommand({pattern: 'sticker$', fromMe: false, desc: Lang.STICKER_DESC}, 
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }));
-}
+
 Asena.addCommand({pattern: 'S', fromMe: false , dontAddCommandList: true}, (async (message, match) => {    
     if (message.reply_message === false) return await message.sendMessage(Lang.NEED_REPLY);
     var downloading = await message.client.sendMessage(message.jid,Lang.DOWNLOADING,MessageType.text);
@@ -146,4 +146,4 @@ Asena.addCommand({pattern: 'psticker', fromMe: true  , dontAddCommandList: true 
             });
         return await message.client.deleteMessage(message.jid, {id: downloading.key.id, remoteJid: message.jid, fromMe: true})
     }));
-}
+
