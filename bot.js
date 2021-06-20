@@ -67,9 +67,8 @@ async function whatsAsena () {
     });
     
     const conn = new WAConnection();
-    conn.version = [2,2119,6];
+    conn.version = [2,2121,7];
     const Session = new StringSession();
-    
 
     conn.logger.level = config.DEBUG ? 'debug' : 'warn';
     var nodb;
@@ -220,9 +219,12 @@ ${chalk.blue.italic('ℹ️ Connecting to WhatsApp... Please wait.')}`);
                             whats = new Message(conn, msg);
                         }
 
+/*
                         if (command.deleteCommand && msg.key.fromMe) {
                             await whats.delete(); 
                         }
+*/
+                       
 
                         try {
                             await command.function(whats, match);
