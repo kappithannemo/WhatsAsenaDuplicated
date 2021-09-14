@@ -6,11 +6,10 @@
 - [@phaticusthiccy](https://github.com/phaticusthiccy)
 
 <p align="center">
-  <a href="https://github.com/phaticusthiccy/WhatsAsenaDuplicated/fork">
-    <img src="https://img.shields.io/github/forks/phaticusthiccy/WhatsAsenaDuplicated?label=Fork&style=social">
+  <a https://github.com/isuwabrooo/deneth-king
     
   </a>
-  <a href="https://github.com/phaticusthiccy/WhatsAsenaDuplicated/stargazers">
+  <a https://github.com/isuwabrooo/deneth-king
     <img src="https://img.shields.io/github/stars/phaticusthiccy/WhatsAsenaDuplicated?style=social">
   </a>
   <a href="https://github.com/phaticusthiccy/WhatsAsenaDuplicated/commits/master">
@@ -47,7 +46,7 @@
 
 ```
 Based On:
-Asena; Asena UserBot,
+Asena; Kuiing UserBot,
 
 WhatsAsena - Asena Userbot is Open Source software open to development. 
 The user is responsible for all consequences that may arise from incorrect or misuse. 
