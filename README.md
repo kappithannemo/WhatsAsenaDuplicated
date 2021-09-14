@@ -112,7 +112,7 @@ $ nano Config.env
 $ node bot.js
 ```
 ### ⚒️ Setup Wiki 
-[![Setup - Kurulum](https://img.icons8.com/clouds/300/000000/settings.png)](https://github.com/phaticusthiccy/WhatsAsenaDuplicated/wiki)
+[![Setup 
 
 ## F.A.Q
 Answer a few frequently asked questions;
