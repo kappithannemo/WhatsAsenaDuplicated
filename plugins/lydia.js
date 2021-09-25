@@ -6,6 +6,7 @@ you may not use this file except in compliance with the License.
 WhatsAsena - Yusuf Usta
 */
 
+/*
 const Asena = require('../events');
 const Config = require('../config');
 const {MessageType} = require('@adiwajshing/baileys');
@@ -15,9 +16,10 @@ const {LydiaAI} = require('coffeehouse');
 const Language = require('../language');
 const Lang = Language.getString('lydia');
 
-Asena.addCommand({pattern: 'addlydia$', fromMe: true, desc: Lang.ADDLYDIA_DESC, dontAddCommandList: true}, (async (message, match) => {
+Asena.addCommand({pattern: 'addlydia$', fromMe: true, desc: Lang.ADDLYDIA_DESC}, (async (message, match) => {
     if (!message.reply_message) return await message.reply(Lang.NEED_REPLY);
-    if (!Config.COFFEEHOUSE_API_KEY) return await message.reply(Lang.COFFEEHOUSE);
+    if (Config.COFFEEHOUSE_API_KEY == 'true') return await message.client.sendMessage(message.jid, '```You Must Set an API KEY!```\nhttps://github.com/phaticusthiccy/WhatsAsenaDuplicated/wiki/LYDIA-API-KEY', MessageType.text);
+
     var unix = Date.now() / 1000 | 0;
 
     var veriler = await LydiaDB.findAll();
@@ -38,9 +40,10 @@ Asena.addCommand({pattern: 'addlydia$', fromMe: true, desc: Lang.ADDLYDIA_DESC, 
     return await message.reply(Lang.ENABLED_LYDIA);
 }));
 
-Asena.addCommand({pattern: 'rmlydia$', fromMe: true, desc: Lang.RMLYDIA_DESC, dontAddCommandList: true}, (async (message, match) => {
+Asena.addCommand({pattern: 'rmlydia$', fromMe: true, desc: Lang.RMLYDIA_DESC}, (async (message, match) => {
     if (!message.reply_message) return await message.reply(Lang.NEED_REPLY);
-    if (!Config.COFFEEHOUSE_API_KEY) return await message.reply(Lang.COFFEEHOUSE);
+    if (Config.COFFEEHOUSE_API_KEY == 'true') return await message.client.sendMessage(message.jid, '```You Must Set an API KEY!```\nhttps://github.com/phaticusthiccy/WhatsAsenaDuplicated/wiki/LYDIA-API-KEY', MessageType.text);
+
     var unix = Date.now() / 1000 | 0;
 
     var veriler = await LydiaDB.findAll();
@@ -51,7 +54,7 @@ Asena.addCommand({pattern: 'rmlydia$', fromMe: true, desc: Lang.RMLYDIA_DESC, do
     } else {
         if (veriler[0].dataValues.users == '') return await message.reply(Lang.ALREADY_EMPTY)
         var users = veriler[0].dataValues.users.split(',');
-        if (users.includes(message.reply_message.jid.split('@')[0])) { users = users.remove(message.reply_message.jid.split('@')[0]).join(','); } else {
+        if (users.includes(message.reply_message.jid.split('@')[0])) { users = users.remove(message.reply_message.jid.split('@')[0]).join(','); } else {
             return await message.reply(Lang.NOT_ADDED);
         }
 
@@ -104,7 +107,7 @@ Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (mess
         if (isLydiaEnabled) {
             await message.sendTyping();
 
-             await session.think_thought(message.message).then(async (data) => {
+            await session.think_thought(message.message).then(async (data) => {
 
                 await message.client.sendMessage(message.jid,data.output, MessageType.text, {quoted: message.data});
 
@@ -112,3 +115,4 @@ Asena.addCommand({on: 'text', fromMe: false, deleteCommand: false}, (async (mess
         }
     }
 }));
+*/

@@ -25,7 +25,7 @@ const NotesDB = require('./sql/notes');
 const Language = require('../language')
 const Lang = Language.getString('notes')
 
-Asena.addCommand({ pattern: 'notes', fromMe: false, desc: Lang.NOTES_USAGE }, async (message, match) => {
+Asena.addCommand({ pattern: 'notes', fromMe: true, desc: Lang.NOTES_USAGE }, async (message, match) => {
 
 
     const _notes = await NotesDB.getNotes()
@@ -114,3 +114,4 @@ Asena.addCommand({ pattern: 'deleteNotes', fromMe: true, desc: Lang.DELETE_USAGE
 
     return await message.sendMessage(successfullMessage(Lang.SUCCESSFULLY_DELETED))
 })
+

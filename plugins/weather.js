@@ -1,57 +1,74 @@
-/* Copyright (C) 2020 Yusuf Usta.
+/* Copyright (C) 2020 isuwa brooo
 
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
 
-WhatsAsena - Yusuf Usta
+KingIsuwa - isuwa brooo
 */
 
-const Asena = require('../events');
+const king = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const got = require('got');
+const Config = require('../config');
+
 
 const Language = require('../language');
 const Lang = Language.getString('weather');
 
-Asena.addCommand({pattern: 'weather ?(.*)', desc: Lang.WEATHER_DESC}, async (message, match) => {
-	
-        
+if (Config.WORKTYPE == 'private') {
 
-	if (match[1] === '') return await message.reply(Lang.NEED_LOCATION);
-	const url = `http://api.openweathermap.org/data/2.5/weather?q=${match[1]}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=tr`;
-	try {
-		const response = await got(url);
-		const json = JSON.parse(response.body);
-		if (response.statusCode === 200) return await message.client.sendMessage(message.jid, '*📍 ' + Lang.LOCATION +':* ```' + match[1] + '```\n' +
-		'*🌐 ' + Lang.LAT +':* ```' + json.coord.lat + '```\n' + 
-		'*🌐 ' + Lang.LONG +':* ```' + json.coord.lon + '```\n\n' +  
-		'*ℹ ' + Lang.DESC +':* ```' + json.weather[0].description + '```\n' +
-		'*☀ ' + Lang.TEMP +':* ```' + json.main.temp_max + '°```\n' +
-		'*💧 ' + Lang.HUMI +':* ```%' + json.main.humidity + '```\n' + 
-                '*🔆 ' + Lang.FEEL +':* ```' + json.main.feels_like + '°```\n' +											 
-		'*💨 ' + Lang.WIND +':* ```' + json.wind.speed + 'm/s```\n' + 
-		'*☁ ' + Lang.CLOUD +':* ```%' + json.clouds.all + '```\n', MessageType.text,{quoted: message.data});
-	} catch {
-		return await message.client.sendMessage(message.jid, Lang.NOT_FOUND, MessageType.text );
-	}
-});
+    King.addCommand({pattern: 'weather ?(.*)', desc: Lang.WEATHER_DESC, fromMe: true}, async (message, match) => {
 
-Asena.addCommand({pattern: 'pweather ?(.*)', fromMe: true, dontAddCommandList: true}, async (message, match) => {
-	if (match[1] === '') return await message.reply(Lang.NEED_LOCATION);
-	const url = `http://api.openweathermap.org/data/2.5/weather?q=${match[1]}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=tr`;
-	try {
-		const response = await got(url);
-		const json = JSON.parse(response.body);
-		if (response.statusCode === 200) return await message.client.sendMessage(message.jid, '*📍 ' + Lang.LOCATION +':* ```' + match[1] + '```\n' +
-		'*🌐 ' + Lang.LAT +':* ```' + json.coord.lat + '```\n' + 
-		'*🌐 ' + Lang.LONG +':* ```' + json.coord.lon + '```\n\n' +  
-		'*ℹ ' + Lang.DESC +':* ```' + json.weather[0].description + '```\n' +
-		'*☀ ' + Lang.TEMP +':* ```' + json.main.temp_max + '°```\n' +
-		'*💧 ' + Lang.HUMI +':* ```%' + json.main.humidity + '```\n' + 
-                '*🔆 ' + Lang.FEEL +':* ```' + json.main.feels_like + '°```\n' +											 
-		'*💨 ' + Lang.WIND +':* ```' + json.wind.speed + 'm/s```\n' + 
-		'*☁ ' + Lang.CLOUD +':* ```%' + json.clouds.all + '```\n', MessageType.text);
-	} catch {
-		return await message.client.sendMessage(message.jid, Lang.NOT_FOUND, MessageType.text);
-	}
-});
+	    if (match[1] === '') return await message.reply(Lang.NEED_LOCATION);
+	    const url = `http://api.openweathermap.org/data/2.5/weather?q=${match[1]}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=tr`;
+	    try {
+		    const response = await got(url);
+		    const json = JSON.parse(response.body);
+		    if (response.statusCode === 200) return await message.client.sendMessage(message.jid, '*📍 ' + Lang.LOCATION +':* ```' + match[1] + '```\n\n' +
+		    '*☀ ' + Lang.TEMP +':* ```' + json.main.temp_max + '°```\n' + 
+		    '*ℹ ' + Lang.DESC +':* ```' + json.weather[0].description + '```\n' +
+		    '*☀ ' + Lang.HUMI +':* ```%' + json.main.humidity + '```\n' + 
+		    '*💨 ' + Lang.WIND +':* ```' + json.wind.speed + 'm/s```\n' + 
+		    '*☁ ' + Lang.CLOUD +':* ```%' + json.clouds.all + '```\n', MessageType.text);
+	    } catch {
+		    return await message.client.sendMessage(message.jid, Lang.NOT_FOUND, MessageType.text);
+	    }
+    });
+}
+if (Config.WORKTYPE == 'public') {
+
+    King.addCommand({pattern: 'weather ?(.*)', desc: Lang.WEATHER_DESC, fromMe: false}, async (message, match) => {
+
+	    if (match[1] === '') return await message.reply(Lang.NEED_LOCATION);
+	    const url = `http://api.openweathermap.org/data/2.5/weather?q=${match[1]}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=tr`;
+	    try {
+		    const response = await got(url);
+		    const json = JSON.parse(response.body);
+		    if (response.statusCode === 200) return await message.client.sendMessage(message.jid, '*📍 ' + Lang.LOCATION +':* ```' + match[1] + '```\n\n' +
+		    '*☀ ' + Lang.TEMP +':* ```' + json.main.temp_max + '°```\n' + 
+		    '*ℹ ' + Lang.DESC +':* ```' + json.weather[0].description + '```\n' +
+		    '*☀ ' + Lang.HUMI +':* ```%' + json.main.humidity + '```\n' + 
+		    '*💨 ' + Lang.WIND +':* ```' + json.wind.speed + 'm/s```\n' + 
+		    '*☁ ' + Lang.CLOUD +':* ```%' + json.clouds.all + '```\n', MessageType.text);
+	    } catch {
+		    return await message.client.sendMessage(message.jid, Lang.NOT_FOUND, MessageType.text);
+	    }
+    });
+    King.addCommand({pattern: 'weather ?(.*)', desc: Lang.WEATHER_DESC, fromMe: true, dontAddCommandList: true}, async (message, match) => {
+
+	    if (match[1] === '') return await message.reply(Lang.NEED_LOCATION);
+	    const url = `http://api.openweathermap.org/data/2.5/weather?q=${match[1]}&units=metric&appid=060a6bcfa19809c2cd4d97a212b19273&language=tr`;
+	    try {
+		    const response = await got(url);
+		    const json = JSON.parse(response.body);
+		    if (response.statusCode === 200) return await message.client.sendMessage(message.jid, '*📍 ' + Lang.LOCATION +':* ```' + match[1] + '```\n\n' +
+		    '*☀ ' + Lang.TEMP +':* ```' + json.main.temp_max + '°```\n' + 
+		    '*ℹ ' + Lang.DESC +':* ```' + json.weather[0].description + '```\n' +
+		    '*☀ ' + Lang.HUMI +':* ```%' + json.main.humidity + '```\n' + 
+		    '*💨 ' + Lang.WIND +':* ```' + json.wind.speed + 'm/s```\n' + 
+		    '*☁ ' + Lang.CLOUD +':* ```%' + json.clouds.all + '```\n', MessageType.text);
+	    } catch {
+		    return await message.client.sendMessage(message.jid, Lang.NOT_FOUND, MessageType.text);
+	    }
+    });
+}

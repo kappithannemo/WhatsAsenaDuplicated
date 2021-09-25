@@ -1,19 +1,19 @@
-/* Copyright (C) 2020 Yusuf Usta.
+/* Copyright (C) 2021 Queen Amdi.
 
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
 
-WhatsAsena - Yusuf Usta
+Queen Amdi - Black Amda
 */
 
-const Asena = require('../events');
+const Amdi = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const FilterDb = require('./sql/filters');
 
 const Language = require('../language');
 const Lang = Language.getString('filters');
 
-Asena.addCommand({pattern: 'filter ?(.*)', fromMe: true, desc: Lang.FILTER_DESC, dontAddCommandList: true}, (async (message, match) => {
+Amdi.applyCMD({pattern: 'filter ?(.*)', fromMe: true,  deleteCommand: false,  desc: Lang.FILTER_DESC, dontAddCommandList: true}, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
 
     if (match === null) {
@@ -34,7 +34,7 @@ Asena.addCommand({pattern: 'filter ?(.*)', fromMe: true, desc: Lang.FILTER_DESC,
     }
 }));
 
-Asena.addCommand({pattern: 'stop ?(.*)', fromMe: true, desc: Lang.STOP_DESC, dontAddCommandList: true}, (async (message, match) => {
+Amdi.applyCMD({pattern: 'stop ?(.*)', fromMe: true,  deleteCommand: false,  desc: Lang.STOP_DESC, dontAddCommandList: true}, (async (message, match) => {
     match = match[1].match(/[\'\"\“](.*?)[\'\"\“]/gsm);
     if (match === null) {
         return await message.client.sendMessage(message.jid,Lang.NEED_REPLY + '\n*Example:* ```.stop "hello"```',MessageType.text)
@@ -50,7 +50,7 @@ Asena.addCommand({pattern: 'stop ?(.*)', fromMe: true, desc: Lang.STOP_DESC, don
 }));
 
 
-Asena.addCommand({on: 'text', fromMe: false}, (async (message, match) => {
+Amdi.applyCMD({on: 'text', fromMe: false}, (async (message, match) => {
     var filtreler = await FilterDb.getFilter(message.jid);
     if (!filtreler) return; 
     filtreler.map(
@@ -58,21 +58,6 @@ Asena.addCommand({on: 'text', fromMe: false}, (async (message, match) => {
             pattern = new RegExp(filter.dataValues.regex ? filter.dataValues.pattern : ('\\b(' + filter.dataValues.pattern + ')\\b'), 'gm');
             if (pattern.test(message.message)) {
                 await message.client.sendMessage(message.jid,filter.dataValues.text, MessageType.text, {quoted: message.data});
-            }
-        }
-    );
-}));
-
-Asena.addCommand({on: 'text', fromMe: true, deleteCommand: false, dontAddCommandList: true}, (async (message, match) => {
-    var filtreler = await FilterDb.getFilter(message.jid);
-    if (!filtreler) return; 
-    return filtreler.map(
-        async (filter) => {
-            pattern = new RegExp(filter.dataValues.regex ? filter.dataValues.pattern : ('\\b(' + filter.dataValues.pattern + ')\\b'), 'gm');
-            var fo = message.message.replace('$', '')
-            if (fo == filter.dataValues.pattern && message.message.startsWith('$')) {
-                await new Promise(r => setTimeout(r, 100));
-                return await message.client.sendMessage(message.jid,filter.dataValues.text, MessageType.text, {quoted: message.data});
             }
         }
     );
