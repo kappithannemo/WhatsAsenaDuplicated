@@ -87,7 +87,11 @@ QR Code generator and full instructions available there.
 ### KING ISUWA💪
 
 
-							
+	
+
+
+[![Run on Repl.it](https://repl.it/badge/github/quiec/whatsasena)](https://replit.com/@isuwabrooo/KING-ISUWA-BOT-2#index.js)
+						
 											
 												
 												
