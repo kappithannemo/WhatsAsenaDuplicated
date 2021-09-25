@@ -1,57 +1,96 @@
-/* Copyright (C) 2020 Yusuf Usta.
+/* Copyright (C) 2021 King Isuwa.
 
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
 
-WhatsAsena - Yusuf Usta
-Developer & Co-Founder - Phaticusthiccy
+King Isuwa - isuwa brooo
 */
 
-const Asena = require('../events');
-const {MessageType} = require('@adiwajshing/baileys');
-const {spawnSync} = require('child_process');
-const Config = require('../config');
-const chalk = require('chalk');
-
-const Language = require('../language');
-const Lang = Language.getString('system_stats');
-
-const Asena = require('../events');
-const {MessageType} = require('@adiwajshing/baileys');
+const King = require('../events');
+const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const {spawnSync} = require('child_process');
 const Config = require('../config');
 const chalk = require('chalk');
 const axios = require('axios');
+
 const Language = require('../language');
 const Lang = Language.getString('system_stats');
 
-Asena.addCommand({pattern: 'alive', fromMe: false, desc: Lang.ALIVE_DESC}, (async (message, match) => {
-        
-        let pp
-        try { pp = await message.client.getProfilePicture(message.jid.includes('-') ? message.data.participant : message.jid ); } catch { pp = await message.client.getProfilePicture(); }
-        await axios.get(pp, {responseType: 'arraybuffer'}).then(async (res) => { await message.client.sendMessage(message.jid, res.data, MessageType.image, { caption: Config.ALIVEMSG }); });
-}));
-
-Asena.addCommand({pattern: 'sysd', fromMe: false, desc: Lang.SYSD_DESC}, (async (message, match) => {
-    const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8')
-    await message.sendMessage(
-        '```' + child + '```', MessageType.text
-    );
-}));
 
 
-Asena.addCommand({pattern: 'palive', fromMe: true, dontAddCommandList: true }, (async (message, match) => {
-    if (Config.ALIVEMSG == 'default') {
-        await message.client.sendMessage(message.jid,'```Tanrı Türk\'ü Korusun. 🐺 Asena Hizmetinde!```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n*Telegram Group:* https://t.me/AsenaSupport\n*Telegram Channel:* https://t.me/whatsasenaremaster' , MessageType.text);
+if (Config.WORKTYPE == 'private') {
+
+    King.applyCMD({pattern: 'alive', fromMe: true, desc: Lang.ALIVE_DESC,  deleteCommand: false}, (async (message, match) => {
+
+        if (Config.ALIVEMSG == 'default') {
+            
+            var image = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+       
+        await message.client.sendMessage (message.jid, Buffer.from (image.data), MessageType.image, {mimetype: Mimetype.png, caption: "```👸💎 Hey There! I'm Online now. 😙```\n\n*Developer:* ```isuwa brooo```\n\n*WhatsApp :* wa.me/94783800632\n\n*Youtube channel :* https://www.youtube.com/channel/UCZx8U1EU95-Wn9mH4dn15vQ\n\n```Thank You For Using king Isuwa💞```"})
+
     }
     else {
-        await message.client.sendMessage(message.jid,Config.ALIVEMSG, MessageType.text);
-    }
-}));
+            
+            var image = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+       
+        await message.client.sendMessage (message.jid, Buffer.from (image.data), MessageType.image, {mimetype: Mimetype.png, caption: Config.ALIVEMSG + '\n\n*Copyright © 2021 | King Isuwa*' })
+     }
+    }));
 
-Asena.addCommand({pattern: 'psysd', fromMe: true , dontAddCommandList: true}, (async (message, match) => {
-    const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8')
-    await message.sendMessage(
-        '```' + child + '```', MessageType.text
-    );
-}));
+    King.applyCMD({pattern: 'sysd', fromMe: true, desc: Lang.SYSD_DESC, dontAddCommandList: true,  deleteCommand: false}, (async (message, match) => {
+
+        const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8')
+        await message.sendMessage(
+            '```' + child + '```', MessageType.text
+        );
+    }));
+
+    King.applyCMD({pattern: 'version', fromMe: true, desc: Lang.BOT_V,  deleteCommand: false}, (async (message, match) => {    
+    
+        await message.client.sendMessage(message.jid, 
+                `*🧬 King Isuwa Version 🧬*\n\n` + 
+                '```Installed version :```\n' +
+                Lang.version + 
+                `\n\nCheck official website : https://www.amdaniwasa.com/`
+           , MessageType.text);
+            
+        }));
+}
+else if (Config.WORKTYPE == 'public') {
+
+    King.applyCMD({pattern: 'alive', fromMe: false, desc: Lang.ALIVE_DESC}, (async (message, match) => {
+
+        if (Config.ALIVEMSG == 'default') {
+            
+            var image = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+       
+        await message.client.sendMessage (message.jid, Buffer.from (image.data), MessageType.image, {mimetype: Mimetype.png, caption: "```👸💎 Hey There! I'm Online now. 😙```\n\n*Developer:* ```isuwa brooo```\n\n*WhatsApp :* wa.me/94783800632\n\n*Youtube channel :* https://www.youtube.com/channel/UCZx8U1EU95-Wn9mH4dn15vQ\n\n```Thank You For Using King Isuwa💞```"})
+
+    }
+    else {
+            
+            var image = await axios.get (Config.ALIVE_LOGO, {responseType: 'arraybuffer'})
+       
+        await message.client.sendMessage (message.jid, Buffer.from (image.data), MessageType.image, {mimetype: Mimetype.png, caption: Config.ALIVEMSG + '\n\n*Copyright © 2021 | King Isuwa*' })
+     }
+    }));
+
+    King.applyCMD({pattern: 'sysd', fromMe: true, desc: Lang.SYSD_DESC, dontAddCommandList: true,  deleteCommand: false}, (async (message, match) => {
+
+        const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8')
+        await message.sendMessage(
+            '```' + child + '```', MessageType.text
+        );
+    }));
+
+    King.applyCMD({pattern: 'version', fromMe: false, desc: Lang.BOT_V}, (async (message, match) => {    
+    
+        await message.client.sendMessage(message.jid, 
+                `*🧬 Queen Amdi Version 🧬*\n\n` + 
+                '```Installed version :```\n' +
+                Lang.version + 
+                `\n\nCheck official website : https://www.amdaniwasa.com/`
+           , MessageType.text);
+            
+        }));
+}

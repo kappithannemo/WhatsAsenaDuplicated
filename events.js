@@ -1,17 +1,15 @@
-/* Copyright (C) 2020 Yusuf Usta.
+/* Copyright (C) 2020 Black Amda.
 
 Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
 
-WhatsAsena - Yusuf Usta
+QueenAmdi - Black Amda
 */
 
-// Komutları burada tutacağız.
 var config = require('./config');
 var Commands = [];
 
-function addCommand(info, func) {
-    // Basit bir fonksiyon, komut eklemek için.
+function applyCMD(info, func) {
     var types = ['photo', 'image', 'text', 'message'];
 
     var infos = {
@@ -45,6 +43,6 @@ function addCommand(info, func) {
 }
 
 module.exports = {
-    addCommand: addCommand,
+    applyCMD: applyCMD,
     commands: Commands
 }
